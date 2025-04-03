@@ -12,7 +12,7 @@ export default function Header() {
                 </div>
                 <ul className='flex items-center gap-6 text-sm font-light text-muted-foreground'>
                     <li className='transition-colors hover:text-foreground'>
-                        <Link href="/project">Project</Link>
+                        <Link href="/projects">Projects</Link>
                     </li><li className='transition-colors hover:text-foreground'>
                         <Link href="/work">Work</Link>
                     </li><li className='transition-colors hover:text-foreground'>
