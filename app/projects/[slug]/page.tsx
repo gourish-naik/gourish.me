@@ -24,9 +24,9 @@ export default async function Project(props: { params: tParams }) {
       <div className='container max-w-3xl'>
         <Link
           href="/projects"
-          className='mb-8 inline-flex items-center gap-2 text-sm font-light'>
+          className='inline-flex mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-blue-300 transition-colors'>
           <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to project&#32;s</span>
+          <span className='ml-1'>Back to project&#39;s</span>
         </Link>
         {
           image && (
@@ -46,7 +46,7 @@ export default async function Project(props: { params: tParams }) {
             {summary}
           </p>
         </header>
-        <main className='prose mt-16 dark:prose-invert'>
+        <main className='prose prose-lg dark:prose-invert mt-16'>
           <MDXContent source={content} />
         </main>
       </div>

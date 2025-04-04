@@ -122,7 +122,7 @@
   .title {
     @apply text-3xl font-serif font-bold underline decoration-border/75 decoration-2 underline-offset-8;
   }
-  .prose pre {
+  /* .prose pre {
     @apply overflow-x-auto rounded-lg bg-accent px-5 py-4 text-sm;
   }
   .prose code {
@@ -134,7 +134,7 @@
   }
   .prose code span {
     @apply font-medium;
-  }
+  } */
 }
 
 @theme {
@@ -153,4 +153,12 @@
   .container {
     max-width: var(--container-max-width-2xl);
   }
+}
+
+/* Styling */
+
+.user-none {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }

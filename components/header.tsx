@@ -5,7 +5,7 @@ import ThemeToggle from '@/components/theme-toggle';
 
 export default function Header() {
     return (
-        <header className='fixed inset-0 to-0 z-50 bg-background/75 py-6 backdrop-blur-lg h-14'>
+        <header className='fixed inset-0 to-0 z-50 bg-background/75 py-6 backdrop-blur-lg h-[65px]'>
             <nav className='container flex max-w-3xl items-center justify-between'>
                 <div>
                     <Link href='/' className='font-serif text-2xl font-bold'>Gourish</Link>
