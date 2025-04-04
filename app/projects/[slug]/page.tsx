@@ -6,8 +6,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react'
 
-export default async function Project({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
+type tParams = Promise<{ slug: string }>;
+
+export default async function Project(props: { params: tParams }) {
+  const { slug } = await props.params;
 
   const project = await getProjectBySlug(slug)
 
