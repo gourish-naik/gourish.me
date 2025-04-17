@@ -28,20 +28,23 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
   }
 }
 
-export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
+export async function getProjects(limit?: number): Promise<Project[]> {
   const files = fs.readdirSync(rootDir)
 
   const projects = await Promise.all(
-    files.map(file => getProjectMetaData(file))
+    files.map(file => getProjectBySlug(file.replace(/\.mdx$/, '')))
   )
 
-  projects.sort((a, b) => {
+  const validProjects = projects.filter((p): p is Project => p !== null)
+
+  validProjects.sort((a, b) => {
     return (
-      new Date(a.timePeriod ?? '').getTime() -
-      new Date(b.timePeriod ?? '').getTime()
+      new Date(a.metadata.timePeriod ?? '').getTime() -
+      new Date(b.metadata.timePeriod ?? '').getTime()
     )
   })
-  return limit ? projects.slice(0, limit) : projects
+
+  return limit ? validProjects.slice(0, limit) : validProjects
 }
 
 export async function getProjectMetaData(
