@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -156,9 +157,24 @@
 }
 
 /* Styling */
+max-w-5xl
 
 .user-none {
   -webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}
+.dark .slick-prev:before,
+.dark .slick-next:before {
+  color: #fff !important;
+}
+
+.projectdetails {
+  @apply overflow-auto;
+  height: 40rem;
 }

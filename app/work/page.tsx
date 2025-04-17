@@ -2,7 +2,7 @@ import { getWorks } from '@/lib/work'
 
 export default async function ProjectsPage() {
   const Works = await getWorks()
-  console.log(Works)
+  console.info(Works)
   return (
     <section className='pb-24 pt-40'>
       <div className='container max-w-3xl'>

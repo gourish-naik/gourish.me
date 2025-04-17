@@ -2,7 +2,7 @@ import React, { JSX, SVGProps } from 'react'
 const navigation = [
     {
         title: 'Linkedin',
-        href: "#",
+        href: "https://linkedin.com/in/i-gourish/",
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGAElement>) => (
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
@@ -12,7 +12,7 @@ const navigation = [
     },
     {
         title: 'Githib',
-        href: "#",
+        href: "https://github.com/gourish-naik/",
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGAElement>) => (
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 30 30">
@@ -22,7 +22,7 @@ const navigation = [
     },
     {
         title: 'gmail',
-        href: "#",
+        href: "mailto:m.gourishankarnaik@gmail.com",
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGAElement>) => (
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
