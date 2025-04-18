@@ -1,6 +1,7 @@
 import React from 'react'
 import { getProjects } from '@/lib/projects'
 import ProjectsRender from './projects'
+import '@/styles/components/projects.scss'
 
 export default async function ProjectsPage() {
   const projects = await getProjects()

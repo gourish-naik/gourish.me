@@ -5,8 +5,6 @@ import Projects from '@/components/projects'
 import { Project } from '@/lib/projects'
 import ProjectDetailsWrapper from '@/app/projects/ProjectDetailsWrapper'
 
-import '@/app/globals.css'
-
 
 // Dynamically import the wrapper (server)
 // const ProjectDetailsWrapper = dynamic(() => import('@/app/projects/ProjectDetailsWrapper'), {
