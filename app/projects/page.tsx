@@ -5,20 +5,22 @@ import '@/styles/components/projects.scss';
 // import { getTranslations } from 'next-intl/server'; // Removed
 // import { unstable_setRequestLocale } from 'next-intl/server'; // Removed
 
-interface ProjectsPageProps {
+// interface ProjectsPageProps {
   // params: { // locale no longer needed
   //   locale: string;
   // };
-}
+// }
 
-export async function generateMetadata(/*{ params: { locale } }: ProjectsPageProps*/) {
+/*{ params: { locale } }: ProjectsPageProps*/
+export async function generateMetadata() {
   // const t = await getTranslations({ locale, namespace: 'ProjectsPage' }); // Removed
   return {
     title: "My Projects", // Static English title
   };
 }
 
-export default async function ProjectsPage(/*{ params: { locale } }: ProjectsPageProps*/) {
+/*{ params: { locale } }: ProjectsPageProps*/
+export default async function ProjectsPage() {
   // Enable static rendering
   // unstable_setRequestLocale(locale); // Removed
 

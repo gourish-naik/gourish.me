@@ -1,6 +1,6 @@
-import { getExperienceBySlug, Experience, ExperienceProject } from '@/lib/experience';
+import { getExperienceBySlug, ExperienceProject } from '@/lib/experience';
 import MDXContent from '@/components/mdx-content';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge'; // Assuming Badge component exists for technologies
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
