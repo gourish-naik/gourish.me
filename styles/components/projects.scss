@@ -1,0 +1,11 @@
+// .projects-wrapper {
+//     @apply grid grid-cols-2 gap-8 flex-col
+// }
+.projectSlider {
+    @apply w-full;
+}
+.projectdetails {
+    &_scroll {
+        @apply h-full overflow-y-auto relative;
+    }
+}

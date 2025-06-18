@@ -157,7 +157,7 @@
 }
 
 /* Styling */
-max-w-5xl
+/* max-w-5xl */
 
 .user-none {
   -webkit-user-select: none;
@@ -172,9 +172,4 @@ max-w-5xl
 .dark .slick-prev:before,
 .dark .slick-next:before {
   color: #fff !important;
-}
-
-.projectdetails {
-  @apply overflow-auto;
-  height: 40rem;
 }

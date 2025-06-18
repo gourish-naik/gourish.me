@@ -1,13 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 import gourish from '@/public/me.jpeg'
+import { useTranslations } from 'next-intl'
 
 
 export default function Intro() {
+  const t = useTranslations("About");
   return (
     <section className='flex flex-col-reverse items-start gap-x-10 gap-y-4 pb-24 md:flex-row md:items-center'>
         <div className='mt-2 flex-1 md:mt-0 user-none'>
-            <h1 className='title no-underline'>Hello, I&#39;m Gourish.</h1>
+            <h1 className='title no-underline'>{t("hello")}</h1>
             <p className='mt-3 font-light text-muted-foreground'>
             👋 Hey there! I&#39;m a <span className='text-orange-300 px-1 font-semibold'>Frontend Engineer</span> based in Kurnool, India.
             I love building clean, intuitive web experiences with React, Next.js, and modern JavaScript. I&#39;m always curious about new tech exploring it not just to grow as a developer, but to share what I learn and help others along the way.
