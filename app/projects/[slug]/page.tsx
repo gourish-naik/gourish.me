@@ -24,9 +24,9 @@ export default async function Project(props: { params: tParams }) {
       <div className='container max-w-3xl'>
         <Link
           href="/projects"
-          className='inline-flex mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-blue-300 transition-colors'>
-          <ArrowLeftIcon className='h-5 w-5' />
-          <span className='ml-1'>Back to project&#39;s</span>
+          className='inline-flex items-center mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-blue-300 transition-colors'>
+          <ArrowLeftIcon className='h-5 w-5 mr-1' /> {/* Added items-center and mr-1 for better alignment */}
+          <span className='ml-1'>Back to projects</span>
         </Link>
         {
           image && (

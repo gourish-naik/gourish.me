@@ -1,21 +1,21 @@
 import { getAllExperiences, ExperienceMetadata } from '@/lib/experience';
 import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'; // Assuming structure from typical shadcn/ui
-import { getTranslations } from 'next-intl/server'; // For page title
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+// import { getTranslations } from 'next-intl/server'; // Removed
 
 export default async function ExperiencePage() {
   const experiences = await getAllExperiences();
-  const t = await getTranslations(); // For localized title
+  // const t = await getTranslations(); // Removed
 
   return (
     <section className="py-24">
       <div className="container max-w-3xl">
         <header className="mb-12">
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            {t('experience.title') || "My Experience"} {/* Assuming a translation key */}
+            My Experience {/* Static English */}
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            {t('experience.subtitle') || "A summary of my professional roles and projects."} {/* Assuming a translation key */}
+            A summary of my professional roles and projects. {/* Static English */}
           </p>
         </header>
 
@@ -29,11 +29,11 @@ export default async function ExperiencePage() {
                       {exp.companyName}
                     </CardTitle>
                     <CardDescription className="text-lg">
-                      {exp.role}
+                      {exp.role} {/* Data, not UI string */}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">{exp.period}</p>
+                    <p className="text-sm text-muted-foreground">{exp.period}</p> {/* Data, not UI string */}
                     {/* Optional: Could add a brief summary or number of projects here if available directly in metadata */}
                   </CardContent>
                 </Card>
@@ -42,7 +42,7 @@ export default async function ExperiencePage() {
           </div>
         ) : (
           <p className="text-center text-muted-foreground">
-            {t('experience.none') || "No professional experience has been added yet."} {/* Assuming a translation key */}
+            No professional experience has been added yet. {/* Static English */}
           </p>
         )}
       </div>
@@ -52,8 +52,8 @@ export default async function ExperiencePage() {
 
 // It's good practice to add generateMetadata for SEO, though not explicitly asked
 export async function generateMetadata() {
-  const t = await getTranslations();
+  // const t = await getTranslations(); // Removed
   return {
-    title: t('experience.metaTitle') || "My Professional Experience",
+    title: "My Professional Experience", // Static English
   };
 }

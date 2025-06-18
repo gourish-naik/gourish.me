@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'; // Assuming Badge component exist
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeftIcon } from 'lucide-react';
-import { getTranslations } from 'next-intl/server'; // For dynamic metadata
+// import { getTranslations } from 'next-intl/server'; // Removed
 
 // Define params type
 interface PageProps {
@@ -16,15 +16,15 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const experience = await getExperienceBySlug(params.slug);
-  const t = await getTranslations();
+  // const t = await getTranslations(); // Removed
 
   if (!experience) {
     return {
-      title: t('experience.notFoundMetaTitle') || "Experience Not Found",
+      title: "Experience Not Found", // Static English
     };
   }
   return {
-    title: `${experience.companyName} - ${experience.role}`,
+    title: `${experience.companyName} - ${experience.role}`, // Dynamic, based on data
     description: `Details about the role at ${experience.companyName} as ${experience.role}, including projects and responsibilities.`,
   };
 }
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function ExperienceDetailPage({ params }: PageProps) {
   const { slug } = params;
   const experience = await getExperienceBySlug(slug);
-  const t = await getTranslations(); // For "Back to experiences" or other UI strings if needed
+  // const t = await getTranslations(); // Removed
 
   if (!experience) {
     notFound();
@@ -47,7 +47,7 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
           href="/experience"
           className='inline-flex items-center mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-blue-300 transition-colors'>
           <ArrowLeftIcon className='h-5 w-5 mr-1' />
-          {t('experience.backLink') || "Back to experiences"}
+          Back to experiences {/* Static English */}
         </Link>
 
         <header className="mb-10">
@@ -68,7 +68,7 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
         {projects && projects.length > 0 && (
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground mb-8">
-              {t('experience.projectsTitle') || "Key Projects"}
+              Key Projects {/* Static English */}
             </h2>
             <div className="space-y-6">
               {projects.map((project: ExperienceProject, index: number) => (
@@ -81,7 +81,7 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
                     {project.technologies && project.technologies.length > 0 && (
                       <div>
                         <h4 className="text-sm font-semibold mb-2 text-foreground">
-                          {t('experience.technologiesTitle') || "Technologies Used:"}
+                          Technologies Used: {/* Static English */}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {project.technologies.map((tech) => (

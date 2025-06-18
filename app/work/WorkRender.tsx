@@ -12,8 +12,7 @@ interface WorkRenderProps {
 
 export default function WorkRender({ works }: WorkRenderProps) {
   if (!works || works.length === 0) {
-    // TODO: Add translation for this message
-    return <p>No work items to display at the moment.</p>;
+    return <p>No work items to display at the moment.</p>; // Static English
   }
 
   return (
