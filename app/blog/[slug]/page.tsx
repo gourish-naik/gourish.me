@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBlogPostBySlug, getAllBlogPosts, BlogMetadata } from '@/lib/blog';
+import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/blog';
 import MDXContent from '@/components/mdx-content';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';

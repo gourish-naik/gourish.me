@@ -1,4 +1,4 @@
-import { getAllExperiences, ExperienceMetadata } from '@/lib/experience';
+import { getAllExperiences } from '@/lib/experience';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 // import { getTranslations } from 'next-intl/server'; // Removed

@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllBlogPosts, BlogMetadata } from '@/lib/blog';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'; // Assuming CardFooter might be useful for date/tags
+import { getAllBlogPosts, } from '@/lib/blog';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card'; // Assuming CardFooter might be useful for date/tags
 
 export async function generateMetadata() {
   return {

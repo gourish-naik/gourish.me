@@ -7,20 +7,20 @@ import WorkRender from './WorkRender';
 // Assuming '@/styles/components/projects.scss' might contain relevant styles
 import '@/styles/components/projects.scss';
 
-interface WorkPageProps {
+// interface WorkPageProps {
   // params: { // locale no longer needed
   //   locale: string;
   // };
-}
-
-export async function generateMetadata(/*{ params: { locale } }: WorkPageProps*/) {
+// }
+/*{ params: { locale } }: WorkPageProps*/
+export async function generateMetadata() {
   // const t = await getTranslations({ locale, namespace: 'WorkPage' }); // Removed
   return {
     title: "My Work", // Static English title
   };
 }
-
-export default async function WorksPage(/*{ params: { locale } }: WorkPageProps*/) {
+/*{ params: { locale } }: WorkPageProps*/
+export default async function WorksPage() {
   // unstable_setRequestLocale(locale); // Removed
 
   const works = await getAllWorks();

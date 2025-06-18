@@ -4,14 +4,14 @@ import React from 'react'
 import Link from 'next/link';
 import ThemeToggle from '@/components/theme-toggle';
 import LanguageSwitcher from '@/components/languageswitcher';
-import { useTranslations } from 'next-intl';
+// import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation'; // Added
 
 const LOCALES = ['en', 'fr', 'ar', 'hi', 'ro', 'te'];
 const HOMEPAGE_PATHS = ['/', ...LOCALES.map(loc => `/${loc}`)];
 
 export default function Header() {
-    const t = useTranslations();
+    // const t = useTranslations();
     const pathname = usePathname(); // Added
 
     const showLanguageSwitcher = HOMEPAGE_PATHS.includes(pathname);
