@@ -8,14 +8,14 @@ import { ArrowLeftIcon } from 'lucide-react';
 // import { getTranslations } from 'next-intl/server'; // Removed
 
 // Define params type
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+type Props = {
+  params: Promise<{slug: string;}>;
+};
 
-export async function generateMetadata({ params }: PageProps) {
-  const experience = await getExperienceBySlug(params.slug);
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params; // Await the params Promise
+  const experience = await getExperienceBySlug(slug);
   // const t = await getTranslations(); // Removed
 
   if (!experience) {
@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default async function ExperienceDetailPage({ params }: PageProps) {
-  const { slug } = params;
+export default async function ExperienceDetailPage({ params }: Props) {
+  const { slug } =  await params;
   const experience = await getExperienceBySlug(slug);
   // const t = await getTranslations(); // Removed
 

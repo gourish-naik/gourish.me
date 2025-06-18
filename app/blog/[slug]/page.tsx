@@ -1,50 +1,50 @@
+// app/blog/[slug]/page.tsx
+
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import React from 'react';
 import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/blog';
 import MDXContent from '@/components/mdx-content';
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeftIcon } from 'lucide-react';
-import { Badge } from '@/components/ui/badge'; // For tags
+import { Badge } from '@/components/ui/badge';
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
+type Props = {
+  params: Promise<{ slug: string; }>;
+};
 
-export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = await getBlogPostBySlug(params.slug);
+// Metadata generation
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params; // Await the params Promise
+  const post = await getBlogPostBySlug(slug);
+
   if (!post) {
     return {
-      title: "Blog Post Not Found",
+      title: 'Post Not Found',
     };
   }
+
   return {
     title: post.title,
     description: post.excerpt,
-    authors: [{ name: post.author }], // Example of adding author to metadata
-    // openGraph: { // Example for social sharing
-    //   title: post.title,
-    //   description: post.excerpt,
-    //   images: post.coverImage ? [{ url: post.coverImage }] : [],
-    //   type: 'article',
-    //   publishedTime: post.publicationDate,
-    //   authors: [post.author],
-    //   tags: post.tags,
-    // }
+    authors: [{ name: post.author }],
   };
 }
 
+// Static params generation
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts();
+
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getBlogPostBySlug(params.slug);
+// Page Component
+export default async function Page({ params }: Props) {
+  const { slug } = await params; // Await the params Promise
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -57,8 +57,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="container max-w-3xl">
         <Link
           href="/blog"
-          className='inline-flex items-center mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-primary transition-colors'>
-          <ArrowLeftIcon className='h-5 w-5 mr-1' />
+          className="inline-flex items-center mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-primary transition-colors"
+        >
+          <ArrowLeftIcon className="h-5 w-5 mr-1" />
           Back to Blog
         </Link>
 
