@@ -7,14 +7,14 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 // Define params type, assuming slug is a string
-interface PageProps {
-  params: {
+type Props = {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default async function WorkPage(props: PageProps) {
-  const { slug } = props.params; // Destructure slug directly
+export default async function WorkPage({params}: Props) {
+  const { slug } = await params; // Destructure slug directly
 
   const workItem = await getWorkBySlug(slug); // Corrected function call
 
