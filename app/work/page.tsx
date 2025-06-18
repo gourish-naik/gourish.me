@@ -1,14 +1,40 @@
-import { getWorks } from '@/lib/work'
+import React from 'react';
+import { getAllWorks } from '@/lib/work';
+import WorkRender from './WorkRender'; // This component will be created next
+import { getTranslations } from 'next-intl/server';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default async function ProjectsPage() {
-  const Works = await getWorks()
-  console.info(Works)
+// Assuming '@/styles/components/projects.scss' might contain relevant styles
+import '@/styles/components/projects.scss';
+
+interface WorkPageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export async function generateMetadata({ params: { locale } }: WorkPageProps) {
+  const t = await getTranslations({ locale, namespace: 'WorkPage' });
+  return {
+    title: t('title'),
+  };
+}
+
+export default async function WorksPage({ params: { locale } }: WorkPageProps) {
+  // Enable static rendering
+  unstable_setRequestLocale(locale);
+
+  const works = await getAllWorks();
+  const t = await getTranslations({ locale, namespace: 'WorkPage' });
+
   return (
-    <section className='pb-24 pt-40'>
-      <div className='container max-w-3xl'>
-        <h1 className='title mb-12'>Work Experience</h1>
-          Hey!
+    <section className='py-24'>
+      <div className="container max-w-3xl">
+        <h1 className='text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-12'>
+          {t('title')}
+        </h1>
+        <WorkRender works={works} />
       </div>
     </section>
-  )
+  );
 }

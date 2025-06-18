@@ -1,6 +1,35 @@
 {
-    "About": {
-      "hello": "مرحبًا، أنا غوریشانكار."
-    }
-  }
-  
+  "Header": {
+    "projects": "Projects",
+    "work": "Work",
+    "experience": "Experience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "ProjectsPage": {
+    "title": "My Projects"
+  },
+  "WorkPage": {
+    "title": "My Work",
+    "noWorkItems": "No work items to display at the moment."
+  },
+  "ExperiencePage": {
+    "title": "My Experience",
+    "subtitle": "A summary of my professional roles and projects.",
+    "none": "No professional experience has been added yet.",
+    "metaTitle": "My Professional Experience",
+    "notFoundMetaTitle": "Experience Not Found",
+    "backLink": "Back to experiences",
+    "projectsTitle": "Key Projects",
+    "technologiesTitle": "Technologies Used:",
+    "role": "Role",
+    "period": "Period"
+  },
+  "About": {
+    "hello": "مرحبًا، أنا غوریشانكار."
+  },
+  "contact": "Contact",
+  "work": "Work",
+  "projects": "Projects",
+  "experience": "Experience"
+}

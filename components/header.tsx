@@ -18,7 +18,11 @@ export default function Header() {
                         <Link href="/projects">{t('projects')}</Link>
                     </li><li className='transition-colors hover:text-foreground'>
                         <Link href="/work">{t('work')}</Link>
-                    </li><li className='transition-colors hover:text-foreground'>
+                    </li>
+                    <li className='transition-colors hover:text-foreground'>
+                        <Link href="/experience">{t('experience')}</Link>
+                    </li>
+                    <li className='transition-colors hover:text-foreground'>
                         <Link href="/contact">{t('contact')}</Link>
                     </li>
                 </ul>
