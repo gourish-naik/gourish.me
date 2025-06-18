@@ -3,7 +3,7 @@ import { getProjects } from '@/lib/projects';
 import ProjectsRender from './projects';
 import '@/styles/components/projects.scss';
 import { getTranslations } from 'next-intl/server';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 interface ProjectsPageProps {
   params: {
@@ -20,7 +20,7 @@ export async function generateMetadata({ params: { locale } }: ProjectsPageProps
 
 export default async function ProjectsPage({ params: { locale } }: ProjectsPageProps) {
   // Enable static rendering
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const projects = await getProjects();
   const t = await getTranslations({ locale, namespace: 'ProjectsPage' });

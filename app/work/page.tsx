@@ -2,7 +2,7 @@ import React from 'react';
 import { getAllWorks } from '@/lib/work';
 import WorkRender from './WorkRender'; // This component will be created next
 import { getTranslations } from 'next-intl/server';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 // Assuming '@/styles/components/projects.scss' might contain relevant styles
 import '@/styles/components/projects.scss';
@@ -22,7 +22,7 @@ export async function generateMetadata({ params: { locale } }: WorkPageProps) {
 
 export default async function WorksPage({ params: { locale } }: WorkPageProps) {
   // Enable static rendering
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const works = await getAllWorks();
   const t = await getTranslations({ locale, namespace: 'WorkPage' });
