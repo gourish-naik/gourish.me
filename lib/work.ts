@@ -2,14 +2,14 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const rootDirectory = path.join(process.cwd(), 'content', 'projects')
+const rootDirectory = path.join(process.cwd(), 'content', 'work')
 
-export type Project = {
-  metadata: ProjectMetadata
+export type Work = {
+  metadata: WorkMetadata
   content: string
 }
 
-export type ProjectMetadata = {
+export type WorkMetadata = {
   title?: string
   role?:string
   summary?: string
@@ -18,42 +18,43 @@ export type ProjectMetadata = {
   slug: string
 }
 
-export async function getWorkSlug(slug: string): Promise<Project | null> {
+export async function getWorkBySlug(slug: string): Promise<Work | null> {
   try {
     const filePath = path.join(rootDirectory, `${slug}.mdx`)
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
     const { data, content } = matter(fileContent)
-    return { metadata: { ...data, slug }, content }
+    return { metadata: { ...data, slug } as WorkMetadata, content }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return null
   }
 }
 
-export async function getWorks(limit?: number): Promise<ProjectMetadata[]> {
+export async function getAllWorks(limit?: number): Promise<WorkMetadata[]> {
   const files = fs.readdirSync(rootDirectory)
 
-  const projects = files
-    .map(file => getWorkMetadata(file))
+  const works = files
+    .map(file => getWorkMetaData(file))
     .sort((a, b) => {
+      // Sort by timePeriod, descending (newer first)
       if (new Date(a.timePeriod ?? '') < new Date(b.timePeriod ?? '')) {
-        return 1
+        return 1;
       } else {
-        return -1
+        return -1;
       }
-    })
+    });
 
   if (limit) {
-    return projects.slice(0, limit)
+    return works.slice(0, limit)
   }
 
-  return projects
+  return works
 }
 
-export function getWorkMetadata(filepath: string): ProjectMetadata {
+export function getWorkMetaData(filepath: string): WorkMetadata {
   const slug = filepath.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, filepath)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
   const { data } = matter(fileContent)
-  return { ...data, slug }
+  return { ...data, slug } as WorkMetadata
 }
