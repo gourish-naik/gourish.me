@@ -173,3 +173,19 @@
 .dark .slick-next:before {
   color: #fff !important;
 }
+
+.text-glow {
+  text-shadow: 
+    0 0 5px rgba(147, 51, 234, 0.6),
+    0 0 10px rgba(147, 51, 234, 0.4),
+    0 0 15px rgba(147, 51, 234, 0.3);
+}
+
+/* Alternative stronger glow if needed */
+.text-glow-strong {
+  text-shadow: 
+    0 0 3px rgba(147, 51, 234, 0.8),
+    0 0 8px rgba(147, 51, 234, 0.6),
+    0 0 12px rgba(147, 51, 234, 0.4),
+    0 0 20px rgba(147, 51, 234, 0.2);
+}
