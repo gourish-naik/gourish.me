@@ -1,8 +1,13 @@
 {
   "About": {
-    "hello": "Hello, I'm Gourishankar."
+    "hello": "Bonjour, je suis Gourish.",
+    "description": "👋 Bonjour, je suis Gourish — un ingénieur Frontend passionné en provenance d'Inde, qui adore donner vie aux idées à travers le code. Je me spécialise dans la création d'expériences web propres, réactives et conviviales avec React, Next.js et le JavaScript moderne. Mais au-delà du code, je suis profondément curieux de technologie — toujours en train d'apprendre, d'expérimenter et de partager ce que je découvre. Pour moi, le développement ne se limite pas à créer des applications — il s'agit de résoudre des problèmes concrets, de grandir en tant que créateur et d'aider les autres à en faire autant."
   },
-  "work": "Work FR",
-  "projects": "Projects FR",
-  "contact": "Contact FR"
+  "work": "Expérience",
+  "projects": "Projets",
+  "contact": "Contact",
+  "project": {
+    "recentProjects": "Projets Récents",
+    "allProjects": "Tous les Projets"
+  }
 }
