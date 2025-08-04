@@ -13,7 +13,6 @@ const LANGUAGES = [
     { code: 'ro', label: 'Romanian' },
     { code: 'ar', label: 'Arabic' },
     { code: 'fr', label: 'French' },
-    //   { code: 'es', label: 'Spanish' }
 ]
 
 const languageMap = LANGUAGES.reduce((acc, lang) => {
