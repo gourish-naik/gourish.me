@@ -20,7 +20,7 @@ export default function Intro() {
         }`}>
       <div className='mt-2 flex-1 md:mt-0 user-none'>
         <h1 className='title no-underline'>{t("hello")}</h1>
-        <p className='mt-3 font-light text-muted-foreground'>
+        <p className='mt-3 text-foreground'>
           {t("description")}
         </p>
       </div>

@@ -9,6 +9,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { getLocale, getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from 'next-intl';
+import FloatingActionButton from '@/components/floating-action-button';
 
 const inter = Inter({subsets:['latin'], variable:'--font-sans'})
 const playfair = Playfair_Display({
@@ -84,6 +85,7 @@ export default async function RootLayout({
           <main className="grow">
             {children}
           </main>
+          <FloatingActionButton />
           <Footer />
         </Providers>
         </NextIntlClientProvider>

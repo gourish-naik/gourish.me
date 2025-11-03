@@ -5,9 +5,16 @@
   },
   "work": "Work",
   "projects": "Projects",
-  "contact": "Contact",
+  "blogs": "Blogs",
+  "touch": "Touch",
+  "relatedBlogs": "Related Blogs",
   "project": {
     "recentProjects": "Recent Projects",
     "allProjects": "All Projects"
+  },
+  "HireMe": {
+    "title": "Let's Work Together",
+    "description": "I'm currently available for freelance work and open to discussing new projects. If you have something in mind, or just want to say hello, feel free to reach out.",
+    "downloadResume": "Download Resume"
   }
 }

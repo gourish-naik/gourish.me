@@ -6,6 +6,8 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Languages } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
+import { useIsMobile } from '@/lib/use-is-mobile'
+
 const LANGUAGES = [
     { code: 'en', label: 'English' },
     { code: 'hi', label: 'Hindi' },
@@ -24,6 +26,7 @@ const languageMap = LANGUAGES.reduce((acc, lang) => {
 export default function LanguageSwitcher() {
     const [locale, setLocale] = useState<string>('en')
     const router = useRouter()
+    const isMobile = useIsMobile()
 
     useEffect(() => {
         const cookieLocale = document.cookie
@@ -50,9 +53,9 @@ export default function LanguageSwitcher() {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button size="sm" variant="ghost" title={languageMap[locale]}>
+                <Button size="sm" variant="attention" title={languageMap[locale]}>
                     <Languages className="size-4 mr-2" />
-                    <span>{locale.toUpperCase()}</span>
+                    {!isMobile && <span>{locale.toUpperCase()}</span>}
                     <span className="sr-only">Language Switcher</span>
                 </Button>
             </PopoverTrigger>

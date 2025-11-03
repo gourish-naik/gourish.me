@@ -5,9 +5,15 @@
   },
   "work": "Experiență",
   "projects": "Proiecte",
-  "contact": "Contact",
+  "blogs": "Bloguri",
+  "touch": "Contact",
   "project": {
     "recentProjects": "Proiecte Recente",
     "allProjects": "Toate Proiectele"
+  },
+  "HireMe": {
+    "title": "Să Lucrăm Împreună",
+    "description": "În prezent, sunt disponibil pentru proiecte freelance și deschis pentru a discuta noi proiecte. Dacă aveți ceva în minte sau doriți doar să salutați, nu ezitați să mă contactați.",
+    "downloadResume": "Descărcați CV-ul"
   }
 }
