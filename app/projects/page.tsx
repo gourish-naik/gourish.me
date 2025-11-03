@@ -4,6 +4,21 @@ import ProjectList from './project-list'
 
 const BATCH_SIZE = 4;
 
+// interface ProjectsPageProps {
+  // params: { // locale no longer needed
+  //   locale: string;
+  // };
+// }
+
+/*{ params: { locale } }: ProjectsPageProps*/
+export async function generateMetadata() {
+  // const t = await getTranslations({ locale, namespace: 'ProjectsPage' }); // Removed
+  return {
+    title: "My Projects", // Static English title
+  };
+}
+
+/*{ params: { locale } }: ProjectsPageProps*/
 export default async function ProjectsPage() {
   const initialProjects = await getProjects(BATCH_SIZE)
 

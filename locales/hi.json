@@ -1,4 +1,30 @@
 {
+  "Header": {
+    "projects": "Projects",
+    "work": "Work",
+    "experience": "Experience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "ProjectsPage": {
+    "title": "My Projects"
+  },
+  "WorkPage": {
+    "title": "My Work",
+    "noWorkItems": "No work items to display at the moment."
+  },
+  "ExperiencePage": {
+    "title": "My Experience",
+    "subtitle": "A summary of my professional roles and projects.",
+    "none": "No professional experience has been added yet.",
+    "metaTitle": "My Professional Experience",
+    "notFoundMetaTitle": "Experience Not Found",
+    "backLink": "Back to experiences",
+    "projectsTitle": "Key Projects",
+    "technologiesTitle": "Technologies Used:",
+    "role": "Role",
+    "period": "Period"
+  },
   "About": {
     "hello": "नमस्ते, मैं गौरिश हूँ।",
     "description": "👋 नमस्ते, मैं गौरिश हूँ — भारत के एक जुनूनी फ्रंटएंड इंजीनियर जो कोड के माध्यम से विचारों को जीवंत करना पसंद करते हैं। मैं रिएक्ट, नेक्स्ट.जेएस और आधुनिक जावास्क्रिप्ट का उपयोग करके साफ, अनुकूल और उपयोगकर्ता-अनुकूल वेब अनुभव बनाने में माहिर हूँ। लेकिन कोड से परे, मैं तकनीक के प्रति गहराई से जिज्ञासु हूँ — हमेशा कुछ नया सीखते, प्रयोग करते और जो कुछ भी सीखता हूँ उसे साझा करते हूँ। मेरे लिए डेवलपमेंट सिर्फ ऐप बनाने के बारे में नहीं है — यह वास्तविक समस्याओं को हल करने, एक निर्माता के रूप में बढ़ने और दूसरों की मदद करने के बारे में है।"
