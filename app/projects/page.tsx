@@ -1,9 +1,8 @@
-import React from 'react';
-import { getProjects } from '@/lib/projects';
-import ProjectsRender from './projects';
-import '@/styles/components/projects.scss';
-// import { getTranslations } from 'next-intl/server'; // Removed
-// import { unstable_setRequestLocale } from 'next-intl/server'; // Removed
+import React from 'react'
+import { getProjects } from '@/lib/projects'
+import ProjectList from './project-list'
+
+const BATCH_SIZE = 4;
 
 // interface ProjectsPageProps {
   // params: { // locale no longer needed
@@ -21,19 +20,13 @@ export async function generateMetadata() {
 
 /*{ params: { locale } }: ProjectsPageProps*/
 export default async function ProjectsPage() {
-  // Enable static rendering
-  // unstable_setRequestLocale(locale); // Removed
-
-  const projects = await getProjects();
-  // const t = await getTranslations({ locale, namespace: 'ProjectsPage' }); // Removed
+  const initialProjects = await getProjects(BATCH_SIZE)
 
   return (
-    <section className='py-24'> {/* Adjusted padding */}
+    <section className='pb-24 pt-40'>
       <div className="container max-w-3xl">
-        <h1 className='text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-12'>
-          My Projects {/* Static English title */}
-        </h1>
-        <ProjectsRender projects={projects} />
+        <h1 className="title mb-12">All Projects</h1>
+        <ProjectList initialProjects={initialProjects} />
       </div>
     </section>
   )

@@ -26,10 +26,22 @@
     "period": "Period"
   },
   "About": {
-    "hello": "Hello, I'm Gourishankar."
+    "hello": "Hello, I'm Gourish.",
+    "description": "👋 Hi, I'm Gourish — a passionate Frontend Engineer from India who loves bringing ideas to life through code. I specialize in crafting clean, responsive, and user-friendly web experiences using React, Next.js, and modern JavaScript. But beyond the code, I’m deeply curious about technology — always learning, experimenting, and sharing what I discover along the way. For me, development isn’t just about building apps — it’s about solving real problems, growing as a creator, and helping others do the same."
   },
   "contact": "Contact",
   "work": "Work",
   "projects": "Projects",
-  "experience": "Experience"
+  "blogs": "Blogs",
+  "touch": "Touch",
+  "relatedBlogs": "Related Blogs",
+  "project": {
+    "recentProjects": "Recent Projects",
+    "allProjects": "All Projects"
+  },
+  "HireMe": {
+    "title": "Let's Work Together",
+    "description": "I'm currently available for freelance work and open to discussing new projects. If you have something in mind, or just want to say hello, feel free to reach out.",
+    "downloadResume": "Download Resume"
+  }
 }

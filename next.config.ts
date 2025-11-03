@@ -4,6 +4,16 @@ import createNextIntPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ap-south-1.graphassets.com',
+        port: '',
+        pathname: '/**', 
+      },
+    ],
+  },
   // Other Next.js configurations can go here
   //   i18n: {
   //   // List all supported locales

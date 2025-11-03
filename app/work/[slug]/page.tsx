@@ -1,37 +1,29 @@
 import MDXContent from '@/components/mdx-content';
-import { getWorkBySlug } from '@/lib/work'; // Corrected import
+import { getWorkProjectBySlug } from '@/lib/work';
 import { ArrowLeftIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import React from 'react';
+import React from 'react'
 
-// Define params type, assuming slug is a string
-type Props = {
-  params: Promise<{
-    slug: string;
-  }>;
-}
+type tParams = Promise<{ slug: string }>;
 
-export default async function WorkPage({params}: Props) {
-  const { slug } = await params; // Destructure slug directly
+export default async function WorkProjectPage(props: { params: tParams }) {
+  const { slug } = await props.params;
 
-  const workItem = await getWorkBySlug(slug); // Corrected function call
+  const project = await getWorkProjectBySlug(slug)
 
-  if (!workItem) {
-    notFound();
+  if (!project) {
+    notFound()
   }
 
-  const { metadata, content } = workItem;
-  // Assuming WorkMetadata might have 'title', 'image', 'summary' similar to ProjectMetadata
-  // Adjust these based on actual WorkMetadata structure if different
-  const { title, image, summary, role, timePeriod } = metadata;
-
+  const { metadata, content } = project
+  const { title, image, summary } = metadata
   return (
-    <section className='pb-24 pt-23'> {/* Assuming pt-23 is a typo and should be pt-24 or similar */}
+    <section className='pb-24 pt-23'>
       <div className='container max-w-3xl'>
         <Link
-          href="/work" // Link back to the main work page
+          href="/work"
           className='inline-flex mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-blue-300 transition-colors'>
           <ArrowLeftIcon className='h-5 w-5' />
           <span className='ml-1'>Back to work</span>
@@ -41,7 +33,7 @@ export default async function WorkPage({params}: Props) {
             <div className='relative mb-6 h-96 w-full overflow-hidden rounded-lg'>
               <Image
                 src={image}
-                alt={title || 'Work item image'} // Alt text
+                alt={title || 'project'}
                 className='object-cover'
                 fill
               />
@@ -50,14 +42,14 @@ export default async function WorkPage({params}: Props) {
         }
         <header>
           <h1 className='title'>{title}</h1>
-          {role && <p className='text-xl text-muted-foreground mt-1'>{role}</p>}
-          {timePeriod && <p className='text-sm text-muted-foreground mt-1'>{timePeriod}</p>}
-          {summary && <p className='mt-3 text-base text-muted-foreground'>{summary}</p>}
+          <p className='mt-3 textxs text-muted-foreground'>
+            {summary}
+          </p>
         </header>
-        <main className='prose prose-lg dark:prose-invert mt-12'> {/* Adjusted margin top */}
+        <main className='prose prose-lg dark:prose-invert mt-16'>
           <MDXContent source={content} />
         </main>
       </div>
     </section>
-  );
+  )
 }

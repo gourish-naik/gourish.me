@@ -26,10 +26,20 @@
     "period": "Period"
   },
   "About": {
-    "hello": "Salut, sunt Gourishankar."
+    "hello": "Salut, sunt Gourish.",
+    "description": "👋 Salut, sunt Gourish — un inginer Frontend pasionat din India, care iubește să ducă ideile la viață prin cod. Sunt specializat în crearea unor experiențe web curate, responsive și prietenoase pentru utilizator, folosind React, Next.js și JavaScript modern. Dar dincolo de cod, sunt profund curios în ceea ce privește tehnologia — mereu învăț, experimentez și împărtășesc ceea ce descopăr în acest proces. Pentru mine, dezvoltarea nu înseamnă doar crearea de aplicații — înseamnă rezolvarea unor probleme reale, evoluția ca creator și ajutorul acordat altora."
   },
-  "contact": "Contact",
-  "work": "Work",
-  "projects": "Projects",
-  "experience": "Experience"
+  "work": "Experiență",
+  "projects": "Proiecte",
+  "blogs": "Bloguri",
+  "touch": "Contact",
+  "project": {
+    "recentProjects": "Proiecte Recente",
+    "allProjects": "Toate Proiectele"
+  },
+  "HireMe": {
+    "title": "Să Lucrăm Împreună",
+    "description": "În prezent, sunt disponibil pentru proiecte freelance și deschis pentru a discuta noi proiecte. Dacă aveți ceva în minte sau doriți doar să salutați, nu ezitați să mă contactați.",
+    "downloadResume": "Descărcați CV-ul"
+  }
 }

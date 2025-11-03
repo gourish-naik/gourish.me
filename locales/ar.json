@@ -1,35 +1,19 @@
 {
-  "Header": {
-    "projects": "Projects",
-    "work": "Work",
-    "experience": "Experience",
-    "contact": "Contact",
-    "blog": "Blog"
-  },
-  "ProjectsPage": {
-    "title": "My Projects"
-  },
-  "WorkPage": {
-    "title": "My Work",
-    "noWorkItems": "No work items to display at the moment."
-  },
-  "ExperiencePage": {
-    "title": "My Experience",
-    "subtitle": "A summary of my professional roles and projects.",
-    "none": "No professional experience has been added yet.",
-    "metaTitle": "My Professional Experience",
-    "notFoundMetaTitle": "Experience Not Found",
-    "backLink": "Back to experiences",
-    "projectsTitle": "Key Projects",
-    "technologiesTitle": "Technologies Used:",
-    "role": "Role",
-    "period": "Period"
-  },
   "About": {
-    "hello": "مرحبًا، أنا غوریشانكار."
+    "hello": "مرحبًا، أنا جوريش.",
+    "description": "👋 مرحبًا، أنا جوريش — مهندس واجهة أمامية شغوف من الهند، أحب تحويل الأفكار إلى واقع من خلال البرمجة. أتقن إنشاء تجارب ويب نظيفة وسريعة الاستجابة وسهلة الاستخدام باستخدام React وNext.js وJavaScript الحديث. لكن وراء الكود، لدي فضول كبير تجاه التكنولوجيا — أتعلم باستمرار، أجرّب أشياء جديدة، وأشارك ما أكتشفه في طريقي. بالنسبة لي، لا يقتصر التطوير على بناء التطبيقات فحسب، بل يتعلق أيضًا بحل المشكلات الحقيقية، والنمو كمطوّر، ومساعدة الآخرين."
   },
-  "contact": "Contact",
-  "work": "Work",
-  "projects": "Projects",
-  "experience": "Experience"
+  "work": "العمل",
+  "projects": "المشاريع",
+  "blogs": "المدونات",
+  "touch": "تواصل",
+  "project":{
+    "recentProjects": "المشاريع الحديثة",
+    "allProjects": "جميع المشاريع"
+  },
+  "HireMe": {
+    "title": "لنعمل معًا",
+    "description": "أنا متاح حاليًا للعمل الحر ومستعد لمناقشة المشاريع الجديدة. إذا كان لديك شيء في ذهنك، أو ترغب فقط في إلقاء التحية، فلا تتردد في التواصل.",
+    "downloadResume": "تحميل السيرة الذاتية"
+  }
 }

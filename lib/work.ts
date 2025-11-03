@@ -1,60 +1,61 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { Project, ProjectMetadata } from './projects';
 
-const rootDirectory = path.join(process.cwd(), 'content', 'work')
+const rootDir = path.join(process.cwd(), 'content', 'work')
 
-export type Work = {
-  metadata: WorkMetadata
-  content: string
-}
+export type WorkProject = Project & {
+  metadata: ProjectMetadata & {
+    company?: string;
+    self?: string;
+  }
+};
 
-export type WorkMetadata = {
-  title?: string
-  role?:string
-  summary?: string
-  image?: string
-  timePeriod?: string
-  slug: string
-}
-
-export async function getWorkBySlug(slug: string): Promise<Work | null> {
+export async function getWorkProjectBySlug(slug: string): Promise<WorkProject | null> {
   try {
-    const filePath = path.join(rootDirectory, `${slug}.mdx`)
-    const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
+    const filePath = path.join(rootDir, `${slug}.mdx`)
+    const fileContent = fs.readFileSync(filePath, { encoding: 'utf-8' })
     const { data, content } = matter(fileContent)
-    return { metadata: { ...data, slug } as WorkMetadata, content }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {
+    return { metadata: { ...data, slug } as WorkProject['metadata'], content }
+  } catch (err) {
+    console.error(err)
     return null
   }
 }
 
-export async function getAllWorks(limit?: number): Promise<WorkMetadata[]> {
-  const files = fs.readdirSync(rootDirectory)
+export async function getWorkProjects(): Promise<WorkProject[]> {
+  const files = fs.readdirSync(rootDir)
 
-  const works = files
-    .map(file => getWorkMetaData(file))
-    .sort((a, b) => {
-      // Sort by timePeriod, descending (newer first)
-      if (new Date(a.timePeriod ?? '') < new Date(b.timePeriod ?? '')) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
+  const projects = await Promise.all(
+    files.map(file => getWorkProjectBySlug(file.replace(/\.mdx$/, '')))
+  )
 
-  if (limit) {
-    return works.slice(0, limit)
-  }
+  const validProjects = projects.filter((p): p is WorkProject => p !== null && p.metadata.self === 'company');
 
-  return works
+  validProjects.sort((a, b) => {
+    return (
+      new Date(a.metadata.timePeriod ?? '').getTime() -
+      new Date(b.metadata.timePeriod ?? '').getTime()
+    )
+  })
+
+  return validProjects;
 }
 
-export function getWorkMetaData(filepath: string): WorkMetadata {
-  const slug = filepath.replace(/\.mdx$/, '')
-  const filePath = path.join(rootDirectory, filepath)
-  const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
-  const { data } = matter(fileContent)
-  return { ...data, slug } as WorkMetadata
+export async function getGroupedWorkProjects(): Promise<Record<string, WorkProject[]>> {
+  const projects = await getWorkProjects();
+  const grouped: Record<string, WorkProject[]> = {};
+
+  projects.forEach(project => {
+    const company = project.metadata.company;
+    if (company) {
+      if (!grouped[company]) {
+        grouped[company] = [];
+      }
+      grouped[company].push(project);
+    }
+  });
+
+  return grouped;
 }
