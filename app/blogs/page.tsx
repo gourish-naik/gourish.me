@@ -2,10 +2,16 @@ import { fetchBlogsFromCMS, BlogPost } from '@/lib/blog-data';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import { features } from '../../config/features';
+import { notFound } from 'next/navigation';
 
 const BATCH_SIZE = 6;
 
 export default async function BlogsPage() {
+  if (!features.IS_BLOG_ENABLED) {
+    notFound();
+  }
+
   const t = await getTranslations();
   const initialBlogs = await fetchBlogsFromCMS(BATCH_SIZE);
   // const allTags = await fetchAllTagsFromCMS();
@@ -41,7 +47,7 @@ export default async function BlogsPage() {
 
 function BlogCard({ blog }: { blog: BlogPost }) {
   return (
-    <Link href={`/blogs/${blog.slug}`} className="group block">
+    <Link href={`/blogs/${blog.slug}`} className="group block shine">
       <div className="rounded-lg border bg-card shadow-sm overflow-hidden h-full flex flex-col">
         <div className="relative w-full h-48">
           {blog.coverImage && (

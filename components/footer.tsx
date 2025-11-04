@@ -1,4 +1,7 @@
-import React, { JSX, SVGProps } from 'react'
+'use client';
+
+import React, { JSX, SVGProps , useState, useEffect} from 'react'
+import { useTheme } from 'next-themes';
 const navigation = [
     {
         title: 'Linkedin',
@@ -33,6 +36,15 @@ const navigation = [
 ]
 
 export default function Footer() {
+    const { resolvedTheme } = useTheme();
+
+    const [mounted, setMounted] = useState(false);
+    
+      useEffect(() => {
+        setMounted(true);
+      }, []);
+    
+    const iconClasses = mounted && resolvedTheme === 'dark' ? 'filter invert' : '';
     return (
         <footer className='py-8'>
             <div className='container max-w-3xl'>
@@ -44,7 +56,7 @@ export default function Footer() {
                             href={item.href}
                             target='_blank'
                             rel='noreferrer noopener'
-                            className='text-muted-foreground hover:text-foreground'>
+                            className={`${iconClasses} text-muted-foreground hover:text-foreground`}>
                                 <span className='sr-only'>{item.title}</span>
                                 <item.icon aria-hidden="true" className='h-5 w-5 hover:opacity-50'/>
                             </a>

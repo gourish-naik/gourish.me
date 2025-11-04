@@ -1,3 +1,4 @@
+@import "micro-interactions-css/dist/micro-interactions.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
@@ -226,4 +227,39 @@
 .dark .slick-prev:before,
 .dark .slick-next:before {
   color: #fff !important;
+}
+
+
+/* custom shine */
+
+.shine:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, #2196f369, #daf8ff59, #3f51b5ad);
+  transform: skewX(337deg);
+  z-index: 2;
+  backdrop-filter: blur(2px);
+}
+
+/* Animate forward on hover */
+.shine:hover::before {
+  animation: shineEffect 0.7s ease-in-out forwards;
+}
+
+/* Animate backward when hover ends */
+.shine::before {
+  transition: left 0.7s ease-in-out;
+}
+
+@keyframes shineEffect {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
 }

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeftIcon } from 'lucide-react';
+import { features } from '../../../config/features';
 
 export async function generateStaticParams() {
   const slugs = await getBlogSlugs();
@@ -38,12 +39,14 @@ export default async function SingleBlogPostPage({ params }: { params: Promise<{
   return (
     <section className='pb-24 pt-23'>
       <div className="container max-w-3xl py-12">
-        <Link
-          href="/blogs"
-          className='inline-flex mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-blue-300 transition-colors'>
-          <ArrowLeftIcon className='h-5 w-5' />
-          <span className='ml-1'>Back to Blogs</span>
-        </Link>
+        {features.IS_BLOG_ENABLED && (
+          <Link
+            href="/blogs"
+            className='inline-flex mb-8 text-sm font-normal text-zinc-500 dark:text-zinc-400 hover:text-blue-300 transition-colors move-left'>
+            <ArrowLeftIcon className='h-5 w-5' />
+            <span className='ml-1'>Back to Blogs</span>
+          </Link>
+        )}
         
         <article>
           <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
@@ -71,7 +74,7 @@ export default async function SingleBlogPostPage({ params }: { params: Promise<{
         </article>
 
         {/* Related Blogs Section */}
-        {relatedBlogs.length > 0 && (
+        {features.IS_BLOG_ENABLED && relatedBlogs.length > 0 && (
           <div className="mt-12">
             <h2 className="text-2xl font-bold mb-6">{t('relatedBlogs') || 'Related Blogs'}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -79,7 +82,7 @@ export default async function SingleBlogPostPage({ params }: { params: Promise<{
                 <Link 
                   key={relatedBlog.slug} 
                   href={`/blogs/${relatedBlog.slug}`}
-                  className="group block"
+                  className="group block "
                 >
                   <article className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     {relatedBlog.coverImage && (
