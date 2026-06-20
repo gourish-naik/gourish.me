@@ -4,7 +4,7 @@ import HomeProjects from "@/components/homeProject"
 import { getTranslations } from "next-intl/server"
 
 export default async function RecentProjects() {
-    const projects = await getProjects(2)
+    const projects = await getProjects(3)
     const t = await getTranslations("project")
     
     return (

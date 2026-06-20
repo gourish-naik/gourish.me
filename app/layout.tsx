@@ -20,27 +20,27 @@ const playfair = Playfair_Display({
 
 // app/page.tsx or app/layout.tsx
 export const metadata = {
-  title: "Gourishankar Menavath | Frontend Developer",
+  title: "Gourishankar Menavath | React & Next.js E-commerce Consultant",
   description:
-    "Portfolio of Gourishankar Menavath, a Frontend Developer with 3+ years of experience specializing in ReactJS, NextJS, and e-commerce solutions.",
+    "4+ years building fast, scalable storefronts with React, Next.js, and Magento PWA Studio for global e-commerce brands.",
   keywords: [
-    "Frontend Developer",
+    "E-commerce Frontend Consultant",
+    "Magento PWA Studio",
+    "Next.js Developer",
     "ReactJS",
-    "NextJS",
-    "Magento PWA",
+    "Headless Commerce",
+    "Core Web Vitals",
     "JavaScript",
     "Tailwind CSS",
     "Portfolio",
     "Gourishankar Menavath",
-    "Web Developer",
-    "E-commerce Developer",
   ],
   authors: [{ name: "Gourishankar Menavath" }],
   creator: "Gourishankar Menavath",
   openGraph: {
-    title: "Gourishankar Menavath | Frontend Developer",
+    title: "Gourishankar Menavath | React & Next.js E-commerce Consultant",
     description:
-      "Frontend Developer with expertise in ReactJS, NextJS, and e-commerce platforms. Check out my portfolio and projects.",
+      "4+ years building fast, scalable e-commerce storefronts with React, Next.js & Magento PWA Studio. Available for freelance projects.",
     url: "https://igourish.in",
     siteName: "igourish",
     images: [

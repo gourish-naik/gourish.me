@@ -7,10 +7,10 @@
     "blog": "Blog"
   },
   "ProjectsPage": {
-    "title": "My Projects"
+    "title": "Projects"
   },
   "WorkPage": {
-    "title": "My Work",
+    "title": "Work Experience",
     "noWorkItems": "No work items to display at the moment."
   },
   "ExperiencePage": {
@@ -26,22 +26,62 @@
     "period": "Period"
   },
   "About": {
-    "hello": "Hello, I'm Gourish.",
-    "description": "👋 Hi, I'm Gourish — a passionate Frontend Engineer from India who loves bringing ideas to life through code. I specialize in crafting clean, responsive, and user-friendly web experiences using React, Next.js, and modern JavaScript. But beyond the code, I’m deeply curious about technology — always learning, experimenting, and sharing what I discover along the way. For me, development isn’t just about building apps — it’s about solving real problems, growing as a creator, and helping others do the same."
+    "hello": "I build fast e-commerce storefronts.",
+    "description": "4+ years shipping production frontends for global e-commerce brands. I specialise in React, Next.js & Magento PWA Studio — from Core Web Vitals audits to full headless storefront migrations.",
+    "available": "Available for freelance projects"
   },
   "contact": "Contact",
   "work": "Work",
   "projects": "Projects",
   "blogs": "Blogs",
   "touch": "Touch",
+  "services": "Services",
   "relatedBlogs": "Related Blogs",
   "project": {
-    "recentProjects": "Recent Projects",
+    "recentProjects": "Selected Work",
     "allProjects": "All Projects"
   },
   "HireMe": {
     "title": "Let's Work Together",
     "description": "I'm currently available for freelance work and open to discussing new projects. If you have something in mind, or just want to say hello, feel free to reach out.",
     "downloadResume": "Download Resume"
+  },
+  "ServicesPage": {
+    "title": "Services",
+    "subtitle": "Focused e-commerce frontend engagements — scoped to deliver measurable outcomes.",
+    "audit": {
+      "name": "Performance Audit",
+      "duration": "1–2 weeks · Fixed fee",
+      "description": "A deep-dive into your storefront's Core Web Vitals, UX flows, and frontend architecture. You get a prioritised report with specific, actionable fixes — not a generic Lighthouse printout.",
+      "includes": [
+        "Core Web Vitals analysis (LCP, CLS, INP)",
+        "Bundle & image audit",
+        "Mobile UX walkthrough",
+        "Prioritised fix recommendations"
+      ]
+    },
+    "build": {
+      "name": "Build / Migration",
+      "duration": "Project-based",
+      "description": "New PWA Studio storefronts, Next.js headless builds, or migrations away from legacy Magento themes. I handle the frontend end-to-end — from architecture to deployment.",
+      "includes": [
+        "Next.js or Magento PWA Studio",
+        "Component library setup",
+        "CMS / API integration",
+        "Performance-first implementation"
+      ]
+    },
+    "retainer": {
+      "name": "Retainer",
+      "duration": "Ongoing · Monthly",
+      "description": "A dedicated slice of my time each month for your team — feature development, performance maintenance, code reviews, or whatever needs the most attention.",
+      "includes": [
+        "Agreed hours per month",
+        "Feature development & bug fixes",
+        "Performance monitoring",
+        "Async availability via Slack / email"
+      ]
+    },
+    "cta": "Let's talk about your project"
   }
 }

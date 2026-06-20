@@ -27,19 +27,46 @@
   },
   "About": {
     "hello": "Bonjour, je suis Gourish.",
-    "description": "👋 Bonjour, je suis Gourish — un ingénieur Frontend passionné en provenance d'Inde, qui adore donner vie aux idées à travers le code. Je me spécialise dans la création d'expériences web propres, réactives et conviviales avec React, Next.js et le JavaScript moderne. Mais au-delà du code, je suis profondément curieux de technologie — toujours en train d'apprendre, d'expérimenter et de partager ce que je découvre. Pour moi, le développement ne se limite pas à créer des applications — il s'agit de résoudre des problèmes concrets, de grandir en tant que créateur et d'aider les autres à en faire autant."
+    "description": "👋 Bonjour, je suis Gourish — un ingénieur Frontend passionné en provenance d'Inde, qui adore donner vie aux idées à travers le code. Je me spécialise dans la création d'expériences web propres, réactives et conviviales avec React, Next.js et le JavaScript moderne. Mais au-delà du code, je suis profondément curieux de technologie — toujours en train d'apprendre, d'expérimenter et de partager ce que je découvre. Pour moi, le développement ne se limite pas à créer des applications — il s'agit de résoudre des problèmes concrets, de grandir en tant que créateur et d'aider les autres à en faire autant.",
+    "available": "Disponible pour des missions freelance"
   },
   "work": "Expérience",
   "projects": "Projets",
   "blogs": "Blogs",
   "touch": "Contact",
+  "services": "Services",
   "project": {
-    "recentProjects": "Projets Récents",
+    "recentProjects": "Travaux Sélectionnés",
     "allProjects": "Tous les Projets"
   },
+  "contact": "Contact",
+  "relatedBlogs": "Articles liés",
   "HireMe": {
     "title": "Travaillons Ensemble",
     "description": "Je suis actuellement disponible pour des missions en freelance et ouvert à la discussion de nouveaux projets. Si vous avez quelque chose en tête, ou si vous voulez simplement dire bonjour, n'hésitez pas à me contacter.",
     "downloadResume": "Télécharger le CV"
+  },
+  "ServicesPage": {
+    "title": "Services",
+    "subtitle": "Focused e-commerce frontend engagements — scoped to deliver measurable outcomes.",
+    "audit": {
+      "name": "Performance Audit",
+      "duration": "1–2 semaines · Forfait fixe",
+      "description": "A deep-dive into your storefront's Core Web Vitals, UX flows, and frontend architecture. You get a prioritised report with specific, actionable fixes — not a generic Lighthouse printout.",
+      "includes": ["Core Web Vitals analysis (LCP, CLS, INP)", "Bundle & image audit", "Mobile UX walkthrough", "Prioritised fix recommendations"]
+    },
+    "build": {
+      "name": "Build / Migration",
+      "duration": "Basé sur le projet",
+      "description": "New PWA Studio storefronts, Next.js headless builds, or migrations away from legacy Magento themes. I handle the frontend end-to-end — from architecture to deployment.",
+      "includes": ["Next.js or Magento PWA Studio", "Component library setup", "CMS / API integration", "Performance-first implementation"]
+    },
+    "retainer": {
+      "name": "Forfait mensuel",
+      "duration": "Continu · Mensuel",
+      "description": "A dedicated slice of my time each month for your team — feature development, performance maintenance, code reviews, or whatever needs the most attention.",
+      "includes": ["Agreed hours per month", "Feature development & bug fixes", "Performance monitoring", "Async availability via Slack / email"]
+    },
+    "cta": "Parlons de votre projet"
   }
 }

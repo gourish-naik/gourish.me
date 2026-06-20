@@ -1,14 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GraphQLClient, gql } from 'graphql-request';
 
 const HYGRAPH_API_URL = process.env.HYGRAPH_API_URL || '';
 const HYGRAPH_API_TOKEN = process.env.HYGRAPH_API_TOKEN || '';
+
+// Use a custom fetch that wires Next.js ISR caching + cache tags.
+// Passing { next: ... } as the 3rd arg to client.request() only sets headers — it does NOT cache.
+// The correct approach is to intercept at the fetch level.
+const hygraphFetch = (revalidate: number, tags?: string[]) =>
+  (url: RequestInfo | URL, options?: RequestInit) =>
+    fetch(url, {
+      ...options,
+      next: { revalidate, tags: tags ?? ['blog'] },
+    } as RequestInit)
 
 const client = new GraphQLClient(HYGRAPH_API_URL, {
   headers: {
     Authorization: `Bearer ${HYGRAPH_API_TOKEN}`,
   },
   method: 'GET',
+  fetch: hygraphFetch(3600, ['blog']),
 });
 
 export type BlogPost = {
@@ -94,7 +104,7 @@ const GET_RELATED_BLOG_POSTS = gql`
 // Data Fetching Functions
 export async function fetchBlogBySlugFromCMS(slug: string): Promise<BlogPost | null> {
   try {
-    const { blogPost } = await client.request(GET_BLOG_POST_BY_SLUG, { slug }, { next: { revalidate: 3600 } } as any);
+    const { blogPost } = await client.request(GET_BLOG_POST_BY_SLUG, { slug });
     
     if (blogPost) {
       // Sanitize tags when fetching
@@ -118,7 +128,7 @@ export async function fetchBlogsFromCMS(limit?: number, offset: number = 0, tags
         whereClause.tags_contains_all = cleanTags;
       }
     }
-    const { blogPosts } = await client.request(GET_BLOG_POSTS, { limit, offset, where: whereClause }, { next: { revalidate: 3600 } } as any);
+    const { blogPosts } = await client.request(GET_BLOG_POSTS, { limit, offset, where: whereClause });
     
     // Sanitize tags in results
     return blogPosts.map((post: BlogPost) => ({
@@ -133,7 +143,7 @@ export async function fetchBlogsFromCMS(limit?: number, offset: number = 0, tags
 
 export async function fetchAllTagsFromCMS(): Promise<Tag[]> {
   try {
-    const { blogPosts } = await client.request(GET_ALL_TAGS, {}, { next: { revalidate: 3600 } } as any);
+    const { blogPosts } = await client.request(GET_ALL_TAGS, {});
     const allTags = blogPosts.flatMap((post: { tags: string[] }) => post.tags || []);
     // Sanitize and get unique tags
     const sanitized = sanitizeTags(allTags);
@@ -146,7 +156,7 @@ export async function fetchAllTagsFromCMS(): Promise<Tag[]> {
 
 export async function getBlogSlugs(): Promise<string[]> {
   try {
-    const { blogPosts } = await client.request(GET_ALL_BLOG_SLUGS, {}, { next: { revalidate: 3600 } } as any);
+    const { blogPosts } = await client.request(GET_ALL_BLOG_SLUGS, {});
     return blogPosts.map((post: { slug: string }) => post.slug);
   } catch (error) {
     console.error('Error fetching blog slugs:', error);
@@ -165,11 +175,11 @@ export async function fetchRelatedBlogs(currentBlogSlug: string, tags: string[],
       return [];
     }
 
-    const { blogPosts } = await client.request(GET_RELATED_BLOG_POSTS, { 
-      currentBlogSlug, 
-      tags: cleanTags, 
-      limit 
-    }, { next: { revalidate: 3600 } } as any);
+    const { blogPosts } = await client.request(GET_RELATED_BLOG_POSTS, {
+      currentBlogSlug,
+      tags: cleanTags,
+      limit,
+    });
     
     // Sanitize tags in results
     return blogPosts.map((post: BlogPost) => ({

@@ -4,6 +4,20 @@ import createNextIntPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/blogs/:slug',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {

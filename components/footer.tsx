@@ -11,7 +11,7 @@ const navigation = [
         )
     },
     {
-        title: 'Githib',
+        title: 'GitHub',
         href: "https://github.com/gourish-naik/",
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGAElement>) => (
@@ -52,7 +52,7 @@ export default function Footer() {
                     </div>
                     <div className='mt-8 md:order-1 md:mt-0'>
                         <p className='text-center text-xs leading-5 text-muted-foreground'>
-                            &copy; {new Date().getFullYear()} rxsolutions. All rights reserved.
+                            &copy; {new Date().getFullYear()} Gourishankar Menavath. All rights reserved.
                         </p>
                     </div>
                 </div>

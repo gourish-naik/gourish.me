@@ -1,0 +1,86 @@
+---
+title: 'Al Fakher — Multi-Brand E-commerce Monorepo'
+summary: 'Built and maintained OOKA, SouthSmoke, and Hookah-shisha as independently branded storefronts sharing a single Next.js codebase — with RTL, Core Web Vitals optimisation, and GraphQL integration.'
+image: /images/projects/al-fakher.jpg
+timePeriod: '2023-06-01'
+tags: ['Next.js', 'GraphQL', 'Monorepo', 'RTL', 'Core Web Vitals']
+---
+
+## The Problem
+
+Al Fakher — one of the world's largest shisha tobacco brands — needed to launch and maintain **multiple distinct storefronts** for different global markets:
+
+- **OOKA** (`me.ooka.com`) — a premium Middle Eastern lifestyle brand for their charcoal-free shisha device
+- **SouthSmoke** (`hookah.com`) — a US-focused mass-market hookah retailer
+- **Hookah-shisha** — a third brand in the same product family
+
+Each store had its own brand identity, design language, and target audience. But they shared the same product catalogue infrastructure, commerce logic, and React component behaviour. Maintaining three separate codebases would mean tripling every feature development and bug fix effort.
+
+## My Role
+
+Frontend Engineer at Codilar Technologies (Oct 2021 – Dec 2024). I owned major parts of UI implementation across all three storefronts, led Core Web Vitals optimisation, and contributed to the monorepo architecture decisions.
+
+## Architecture Decision — `src/` + `store/<name>/` Override Pattern
+
+The core architectural idea: a **shared base with per-store override layers**.
+
+```
+/src                          ← shared components, hooks, logic, styles
+  /components
+  /hooks
+  /pages
+  /styles
+
+/store
+  /ooka                       ← OOKA-specific overrides
+    /components               ← only files that differ from src/
+    /styles
+      design-tokens.css       ← brand colours, fonts, spacing
+  /southsmoke
+    /components
+    /styles
+      design-tokens.css
+  /hookah-shisha
+    /styles
+      design-tokens.css
+```
+
+At build time, the store target is resolved and the `/store/<name>/` files take precedence over their `/src/` counterparts — same folder structure, so a component override is just a file drop-in. Stores with identical behaviour for a given component simply don't include an override; they inherit from `src/` automatically.
+
+This meant:
+
+- **One PR fixes a shared bug across all three stores**
+- **Brand-specific work is isolated** — a design change for OOKA never accidentally touches SouthSmoke
+- **New stores can be onboarded** by creating a new `/store/<name>/` folder with design tokens and only the components that actually differ
+
+## RTL Support
+
+OOKA targets Arabic-speaking users in the Middle East. I implemented **bidirectional layout support** (LTR/RTL) within the shared component layer:
+
+- CSS logical properties (`margin-inline-start` instead of `margin-left`) used throughout shared components so RTL flips automatically
+- `dir` attribute toggled on the HTML root based on locale
+- Store-specific design tokens handle Arabic typography (font-family, line-height adjustments)
+- Tested against Arabic (`ar`) locale on `me.ooka.com`
+
+## GraphQL Integration
+
+All storefronts fetched product, catalogue, and cart data via GraphQL. I built and maintained:
+
+- Shared query fragments for product listings, PDPs, and cart operations
+- Per-store variable overrides where store context changed the query shape (e.g., currency, region-specific inventory)
+- Optimistic UI updates for add-to-cart to keep the interaction fast regardless of API latency
+
+## Core Web Vitals Optimisation
+
+High-traffic e-commerce on Next.js means LCP and CLS are the metrics that directly affect conversion. Improvements I made:
+
+- **LCP**: Moved hero images to `priority` Next.js `<Image>` with explicit `width`/`height` to eliminate layout shift; preloaded critical fonts
+- **CLS**: Audited and fixed all dynamic content areas (cart badge, promotional banners) that were shifting layout after hydration; replaced absolute positioning hacks with reserved space using `min-height`
+- **Code splitting**: Lazy-loaded below-the-fold components (testimonials carousel, social gallery) to reduce initial JS bundle size
+
+## Outcome
+
+- Three live production storefronts maintained from a single codebase
+- LCP and CLS scores improved across storefronts after the Core Web Vitals push
+- OOKA launched with full Arabic RTL support at go-live
+- New brand theming onboarded by dropping design token files — no shared component changes required
