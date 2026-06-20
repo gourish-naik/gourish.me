@@ -14,11 +14,9 @@ interface BlogsPageProps {
 export default async function BlogsPage({ searchParams }: BlogsPageProps) {
   const { tags: rawTags } = await searchParams;
 
+  // Preserve original casing — Hygraph tag matching is case-sensitive
   const selectedTags = rawTags
-    ? rawTags
-        .split(',')
-        .map(t => t.trim().toLowerCase())
-        .filter(Boolean)
+    ? rawTags.split(',').map(t => t.trim()).filter(Boolean)
     : [];
 
   const [blogs, allTags] = await Promise.all([

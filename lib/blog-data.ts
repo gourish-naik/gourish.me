@@ -33,11 +33,21 @@ export type BlogPost = {
 
 export type Tag = string;
 
-// Helper function to sanitize tags — always lowercase for case-insensitive dedup
+// Trim only — do NOT lowercase. Hygraph matching is case-sensitive so we must
+// preserve the original casing for queries to match what's stored.
 function sanitizeTags(tags: string[]): string[] {
-  return tags
-    .map(tag => tag.trim().toLowerCase())
-    .filter(tag => tag.length > 0);
+  return tags.map(tag => tag.trim()).filter(tag => tag.length > 0);
+}
+
+// Case-insensitive dedup: keeps first-seen casing, removes duplicates that differ only by case.
+function deduplicateTagsCaseInsensitive(tags: string[]): string[] {
+  const seen = new Set<string>();
+  return tags.filter(tag => {
+    const key = tag.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 // GraphQL Queries
@@ -137,7 +147,7 @@ export async function fetchAllTagsFromCMS(): Promise<Tag[]> {
   try {
     const { blogPosts } = await client.request(GET_ALL_TAGS, {});
     const allTags = blogPosts.flatMap((post: { tags: string[] }) => post.tags || []);
-    return Array.from(new Set(sanitizeTags(allTags)));
+    return deduplicateTagsCaseInsensitive(sanitizeTags(allTags));
   } catch (error) {
     console.error('Error fetching all tags:', error);
     return [];

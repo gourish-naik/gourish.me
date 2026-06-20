@@ -63,8 +63,9 @@ export function BlogTagFilter({ allTags, selectedTags }: BlogTagFilterProps) {
   );
 
   const toggleTag = (tag: string) => {
-    const next = selectedTags.includes(tag)
-      ? selectedTags.filter(t => t !== tag)
+    const isActive = selectedTags.some(t => t.toLowerCase() === tag.toLowerCase());
+    const next = isActive
+      ? selectedTags.filter(t => t.toLowerCase() !== tag.toLowerCase())
       : [...selectedTags, tag];
     updateTags(next);
   };
@@ -117,7 +118,7 @@ export function BlogTagFilter({ allTags, selectedTags }: BlogTagFilterProps) {
       )}
 
       {allTags.map(tag => {
-        const active = selectedTags.includes(tag);
+        const active = selectedTags.some(t => t.toLowerCase() === tag.toLowerCase());
         const { bg, color } = getTagStyle(tag);
         return (
           <button
