@@ -1,39 +1,59 @@
-import { fetchBlogsFromCMS, BlogPost } from '@/lib/blog-data';
+import { fetchBlogsFromCMS, fetchAllTagsFromCMS, BlogPost } from '@/lib/blog-data';
+import { BlogTagFilter } from '@/components/blog-tag-filter';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Suspense } from 'react';
 
-const BATCH_SIZE = 6;
+const BATCH_SIZE = 20;
 
-export default async function BlogsPage() {
+interface BlogsPageProps {
+  searchParams: Promise<{ tags?: string }>;
+}
+
+export default async function BlogsPage({ searchParams }: BlogsPageProps) {
+  const { tags: rawTags } = await searchParams;
+
+  const selectedTags = rawTags
+    ? rawTags
+        .split(',')
+        .map(t => t.trim().toLowerCase())
+        .filter(Boolean)
+    : [];
+
+  const [blogs, allTags] = await Promise.all([
+    fetchBlogsFromCMS(BATCH_SIZE, 0, selectedTags.length > 0 ? selectedTags : undefined),
+    fetchAllTagsFromCMS(),
+  ]);
+
   const t = await getTranslations();
-  const initialBlogs = await fetchBlogsFromCMS(BATCH_SIZE);
-  // const allTags = await fetchAllTagsFromCMS();
-  // console.log("All Tags:", allTags);
 
   return (
-    <section className='pb-24 pt-23'>
+    <section className="pb-24 pt-23">
       <div className="container max-w-3xl py-12">
         <h1 className="title mb-12">{t('blogs')}</h1>
 
-        {/* Tag Filter Placeholder */}
+        {/* Tag Filter */}
         <div className="mb-8">
-          {/* <BlogTagFilter tags={allTags} /> */}
-          <p>Tag Filter will go here.</p>
+          <Suspense fallback={null}>
+            <BlogTagFilter allTags={allTags} selectedTags={selectedTags} />
+          </Suspense>
         </div>
 
         {/* Blog List */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {initialBlogs.map((blog) => (
-            <BlogCard key={blog.slug} blog={blog} />
-          ))}
-        </div>
-
-        {/* Infinite Scroll Placeholder */}
-        <div className="mt-12 text-center">
-          {/* <InfiniteScrollBlogs initialBlogs={initialBlogs} /> */}
-          <p>Infinite Scroll will go here.</p>
-        </div>
+        {blogs.length === 0 ? (
+          <div className="py-16 text-center text-muted-foreground">
+            {selectedTags.length > 0
+              ? `No posts found for the selected tag${selectedTags.length > 1 ? 's' : ''}.`
+              : 'No posts yet. Check back soon.'}
+          </div>
+        ) : (
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {blogs.map(blog => (
+              <BlogCard key={blog.slug} blog={blog} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
@@ -42,8 +62,8 @@ export default async function BlogsPage() {
 function BlogCard({ blog }: { blog: BlogPost }) {
   return (
     <Link href={`/blogs/${blog.slug}`} className="group block">
-      <div className="rounded-lg border bg-card shadow-sm overflow-hidden h-full flex flex-col">
-        <div className="relative w-full h-48">
+      <div className="flex h-full flex-col overflow-hidden rounded-lg border bg-card shadow-sm">
+        <div className="relative h-48 w-full">
           {blog.coverImage && (
             <Image
               src={blog.coverImage.url}
@@ -53,20 +73,23 @@ function BlogCard({ blog }: { blog: BlogPost }) {
             />
           )}
         </div>
-        <div className="p-4 flex flex-col flex-grow">
-          <h2 className="text-xl font-semibold group-hover:text-primary transition-colors line-clamp-2">
+        <div className="flex flex-grow flex-col p-4">
+          <h2 className="line-clamp-2 text-xl font-semibold transition-colors group-hover:text-primary">
             {blog.title}
           </h2>
-          <p className="text-muted-foreground text-sm mt-2 line-clamp-3 flex-grow">
+          <p className="mt-2 line-clamp-3 flex-grow text-sm text-muted-foreground">
             {blog.summary}
           </p>
-          <div className="flex items-center justify-between text-xs text-gray-500 mt-4">
+          <div className="mt-4 flex items-center justify-between text-xs text-gray-500">
             <span>{blog.author.name}</span>
             <span>{new Date(blog.date).toLocaleDateString()}</span>
           </div>
           <div className="mt-2 flex flex-wrap gap-1">
-            {blog.tags.map((tag) => (
-              <span key={tag} className="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full text-xs">
+            {blog.tags.map(tag => (
+              <span
+                key={tag}
+                className="rounded-full bg-secondary px-2 py-0.5 text-xs text-secondary-foreground"
+              >
                 {tag}
               </span>
             ))}

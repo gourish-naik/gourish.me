@@ -227,3 +227,27 @@
 .dark .slick-next:before {
   color: #fff !important;
 }
+
+/* Tag filter horizontal scroll — scrollbar hidden until user scrolls */
+.tag-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s;
+}
+.tag-scroll.scrolling {
+  scrollbar-color: rgba(120, 120, 120, 0.45) transparent;
+}
+.tag-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+.tag-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tag-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+.tag-scroll.scrolling::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.45);
+}

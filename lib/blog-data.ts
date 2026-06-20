@@ -34,10 +34,10 @@ export type BlogPost = {
 
 export type Tag = string;
 
-// Helper function to sanitize tags
+// Helper function to sanitize tags — always lowercase for case-insensitive dedup
 function sanitizeTags(tags: string[]): string[] {
   return tags
-    .map(tag => tag.trim())
+    .map(tag => tag.trim().toLowerCase())
     .filter(tag => tag.length > 0);
 }
 
