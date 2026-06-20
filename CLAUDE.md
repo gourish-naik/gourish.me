@@ -63,7 +63,7 @@ Feature flags live in `lib/site-config.ts` and are consumed by `components/heade
 
 Work entries are filtered by `metadata.self === 'company'` — only entries with this field set are shown on the `/work` page. Work entries are grouped by `metadata.company`. See `content/work/template.mdx` for frontmatter shape.
 
-Projects frontmatter shape: `title`, `summary`, `image`, `timePeriod` (used for sort order), `slug` (derived from filename). See `content/projects/template.mdx`.
+Projects frontmatter shape: `title`, `summary`, `image`, `timePeriod` (used for sort order), `slug` (derived from filename), `tags` (string array for badge display).
 
 ### i18n (next-intl)
 
@@ -86,3 +86,33 @@ Dark/light mode via `next-themes`. The `Providers` component wraps the app with 
 - Remote images from `ap-south-1.graphassets.com` (Hygraph) are allowlisted in `next.config.ts`
 - MDX content is rendered via `components/mdx-content.tsx` using `next-mdx-remote`
 - shadcn/ui components live under `components/ui/` (generated via `components.json`)
+- `next-mdx-remote` is on v6 — import from `next-mdx-remote/rsc` for RSC usage
+
+## What's Done (as of June 2026)
+
+Portfolio redesign is complete and pushed to `new-release` branch. Open a PR to `prod` to deploy.
+
+### Completed
+- `/admin` — password-gated blog creation form; writes to Hygraph via mutations; mobile responsive
+- `/services` — 3 package cards (Audit / Build / Retainer) with CTA to /touch
+- `/touch` — rewritten with Resend contact form + conditional resume download
+- `/blogs` — canonical Hygraph blog route with ISR caching fixed (custom fetch on GraphQLClient)
+- `/api/revalidate` — Hygraph webhook handler; busts `blog` cache tag on publish
+- `app/sitemap.ts` — includes dynamic blog slugs from Hygraph
+- `app/robots.ts` — disallows `/admin` and `/api/`
+- `next.config.ts` — 301 redirects `/blog` → `/blogs`
+- `lib/site-config.ts` — feature flags for blog, resume, services
+- Case studies: `al-fakher.mdx`, `marina-homes.mdx`, `channelbay.mdx`
+- Removed placeholder project MDX files
+- Header nav: Projects + Services links with feature flag guards
+- All locale files (`en`, `hi`, `te`, `fr`, `ro`, `ar`) updated with new copy
+- "Available for freelance" green dot in hero
+- Footer copyright and GitHub spelling fixed
+- `next-mdx-remote` upgraded 5 → 6 (Vercel security check)
+- Resume PDF at `public/Gourishankar_FE_dev.pdf`
+
+### Pending (next session)
+- Add project images to `public/images/projects/` (al-fakher.jpg, marina-homes.jpg, channelbay.jpg)
+- Verify Resend sender domain `igourish.in` is verified in Resend dashboard
+- Add all env vars to Vercel (see env table above)
+- Merge `new-release` → `prod` PR to go live
