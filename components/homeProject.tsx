@@ -18,7 +18,7 @@ export default function HomeProjects(
         <li key={metadata.slug} className='group relative'>
           <Link href={`/projects/${metadata.slug}`}>
             {metadata.image && (
-              <div className='h-80 w-full overflow-hidden bg-muted sm:h-60'>
+              <div className='relative h-80 w-full overflow-hidden bg-muted sm:h-60'>
                 <Image
                   src={metadata.image}
                   alt={metadata.title || 'project'}
