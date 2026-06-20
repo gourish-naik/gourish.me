@@ -1,4 +1,5 @@
 import { fetchBlogsFromCMS, fetchAllTagsFromCMS, BlogPost } from '@/lib/blog-data';
+import { isValidTechTag } from '@/lib/tech-tags';
 import { BlogTagFilter } from '@/components/blog-tag-filter';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
@@ -19,10 +20,13 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
     ? rawTags.split(',').map(t => t.trim()).filter(Boolean)
     : [];
 
-  const [blogs, allTags] = await Promise.all([
+  const [blogs, fetchedTags] = await Promise.all([
     fetchBlogsFromCMS(BATCH_SIZE, 0, selectedTags.length > 0 ? selectedTags : undefined),
     fetchAllTagsFromCMS(),
   ]);
+
+  // Only surface recognised technology tags in the filter — topic/content tags are excluded
+  const allTags = fetchedTags.filter(isValidTechTag);
 
   const t = await getTranslations();
 
