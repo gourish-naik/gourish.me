@@ -27,19 +27,46 @@
   },
   "About": {
     "hello": "హలో, నేను గౌరిష్.",
-    "description": "👋 హలో, నేను గౌరిష్ — భారతదేశం నుండి వచ్చిన ఓ ఉత్సాహభరితమైన ఫ్రంటెండ్ ఇంజనీర్, కోడ్ ద్వారా ఆలోచనలను నిజం చేయడం నాకు చాలా ఇష్టం. రియాక్ట్, నెక్స్ట్.జెఎస్ మరియు ఆధునిక జావాస్క్రిప్ట్ ఉపయోగించి స్పష్టమైన, స్పందనాత్మకమైన మరియు వినియోగదారు స్నేహితులైన వెబ్ అనుభవాలను సృష్టించడంలో నేను నైపుణ్యం కలిగి ఉన్నాను. కోడ్ కాకుండా, నేను సాంకేతికత పట్ల ఎంతో ఆసక్తి కలిగి ఉంటాను — ఎప్పుడూ నేర్చుకుంటూ, ప్రయోగాలు చేస్తూ, నేను కనుగొన్న వాటిని పంచుకుంటూ ఉంటాను. నాకు డెవలప్‌మెంట్ అంటే అప్లికేషన్లు మాత్రమే కాదు — నిజమైన సమస్యలను పరిష్కరించడం, సృజనాత్మకంగా పెరగడం మరియు ఇతరులకు సహాయం చేయడం కూడా."
+    "description": "👋 హలో, నేను గౌరిష్ — భారతదేశం నుండి వచ్చిన ఓ ఉత్సాహభరితమైన ఫ్రంటెండ్ ఇంజనీర్, కోడ్ ద్వారా ఆలోచనలను నిజం చేయడం నాకు చాలా ఇష్టం. రియాక్ట్, నెక్స్ట్.జెఎస్ మరియు ఆధునిక జావాస్క్రిప్ట్ ఉపయోగించి స్పష్టమైన, స్పందనాత్మకమైన మరియు వినియోగదారు స్నేహితులైన వెబ్ అనుభవాలను సృష్టించడంలో నేను నైపుణ్యం కలిగి ఉన్నాను. కోడ్ కాకుండా, నేను సాంకేతికత పట్ల ఎంతో ఆసక్తి కలిగి ఉంటాను — ఎప్పుడూ నేర్చుకుంటూ, ప్రయోగాలు చేస్తూ, నేను కనుగొన్న వాటిని పంచుకుంటూ ఉంటాను. నాకు డెవలప్‌మెంట్ అంటే అప్లికేషన్లు మాత్రమే కాదు — నిజమైన సమస్యలను పరిష్కరించడం, సృజనాత్మకంగా పెరగడం మరియు ఇతరులకు సహాయం చేయడం కూడా.",
+    "available": "ఫ్రీలాన్స్ ప్రాజెక్టులకు అందుబాటులో ఉన్నాను"
   },
   "work": "పని",
   "projects": "ప్రాజెక్టులు",
   "blogs": "బ్లాగులు",
   "touch": "సంప్రదించండి",
+  "services": "సేవలు",
   "project": {
-    "recentProjects": "ఇటీవలి ప్రాజెక్టులు",
+    "recentProjects": "ఎంపిక చేసిన పని",
     "allProjects": "అన్నీ ప్రాజెక్టులు"
   },
+  "contact": "సంప్రదించండి",
+  "relatedBlogs": "సంబంధిత బ్లాగులు",
   "HireMe": {
     "title": "కలిసి పని చేద్దాం",
     "description": "నేను ప్రస్తుతం ఫ్రీలాన్స్ పని కోసం అందుబాటులో ఉన్నాను మరియు కొత్త ప్రాజెక్ట్‌లను చర్చించడానికి సిద్ధంగా ఉన్నాను. మీ మనస్సులో ఏదైనా ఉంటే, లేదా కేవలం హలో చెప్పాలనుకుంటే, సంప్రదించడానికి సంకోచించకండి.",
     "downloadResume": "రెస్యూమ్ డౌన్‌లోడ్ చేయండి"
+  },
+  "ServicesPage": {
+    "title": "Services",
+    "subtitle": "Focused e-commerce frontend engagements — scoped to deliver measurable outcomes.",
+    "audit": {
+      "name": "Performance Audit",
+      "duration": "1–2 weeks · Fixed fee",
+      "description": "A deep-dive into your storefront's Core Web Vitals, UX flows, and frontend architecture. You get a prioritised report with specific, actionable fixes — not a generic Lighthouse printout.",
+      "includes": ["Core Web Vitals analysis (LCP, CLS, INP)", "Bundle & image audit", "Mobile UX walkthrough", "Prioritised fix recommendations"]
+    },
+    "build": {
+      "name": "Build / Migration",
+      "duration": "Project-based",
+      "description": "New PWA Studio storefronts, Next.js headless builds, or migrations away from legacy Magento themes. I handle the frontend end-to-end — from architecture to deployment.",
+      "includes": ["Next.js or Magento PWA Studio", "Component library setup", "CMS / API integration", "Performance-first implementation"]
+    },
+    "retainer": {
+      "name": "Retainer",
+      "duration": "Ongoing · Monthly",
+      "description": "A dedicated slice of my time each month for your team — feature development, performance maintenance, code reviews, or whatever needs the most attention.",
+      "includes": ["Agreed hours per month", "Feature development & bug fixes", "Performance monitoring", "Async availability via Slack / email"]
+    },
+    "cta": "Let's talk about your project"
   }
 }

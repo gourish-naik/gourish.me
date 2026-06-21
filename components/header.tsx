@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ThemeToggle from '@/components/theme-toggle';
 import { useTranslations } from 'next-intl';
-// import { usePathname } from 'next/navigation';
+import { siteConfig } from '@/lib/site-config';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
@@ -26,11 +26,21 @@ export default function Header() {
         <div className={`absolute top-[65px] left-0 w-full bg-background/75 backdrop-blur-lg md:relative md:top-0 md:w-auto md:bg-transparent md:backdrop-blur-none ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
           <ul className='flex flex-col md:flex-row items-center gap-6 text-sm font-light text-muted-foreground capitalize p-4 md:p-0'>
             <li className='transition-colors hover:text-foreground'>
-              <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>{t('blogs')}</Link>
+              <Link href="/projects" onClick={() => setIsMenuOpen(false)}>{t('projects')}</Link>
             </li>
             <li className='transition-colors hover:text-foreground'>
               <Link href="/work" onClick={() => setIsMenuOpen(false)}>{t('work')}</Link>
             </li>
+            {siteConfig.showServices && (
+              <li className='transition-colors hover:text-foreground'>
+                <Link href="/services" onClick={() => setIsMenuOpen(false)}>{t('services')}</Link>
+              </li>
+            )}
+            {siteConfig.showBlog && (
+              <li className='transition-colors hover:text-foreground'>
+                <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>{t('blogs')}</Link>
+              </li>
+            )}
             <li className='transition-colors hover:text-foreground'>
               <Link href="/touch" onClick={() => setIsMenuOpen(false)}>{t('touch')}</Link>
             </li>

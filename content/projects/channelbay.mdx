@@ -1,0 +1,75 @@
+---
+title: 'Channelbay — Shopify Inventory Management App'
+summary: 'Built the frontend UI for a multi-channel inventory management platform on the Shopify App Store — ERB templates, reusable Ruby view helpers, and SCSS/JS component interactions.'
+image: /images/channel-bay.jpeg
+timePeriod: '2025-01-01'
+tags: ['Ruby on Rails', 'ERB', 'SCSS', 'Shopify', 'Tailwind CSS']
+---
+
+## The Problem
+
+[Channelbay](https://channelbay.io) is a multi-channel inventory management platform available on the Shopify App Store. It lets merchants centralise stock tracking, purchase orders, and inventory adjustments across Shopify, Amazon, retail locations, and warehouses — replacing manual spreadsheet workflows.
+
+The frontend challenge: this is an **internal B2B tool** (vendor and Shopify admin POV), not a consumer storefront. The UI needs to be dense, data-rich, and highly interactive — dashboards, filterable tables, stock alert panels, PO management screens — while remaining fast and maintainable within a Ruby on Rails ERB architecture.
+
+## My Role
+
+Frontend Engineer at Dayspring Technologies (Jan 2025 – Present). I owned the ERB template layer, built reusable Ruby view helpers, and implemented SCSS and JavaScript for UI component interactions.
+
+## Stack
+
+- **Ruby on Rails** — application framework
+- **ERB** (Embedded Ruby) — server-rendered HTML templates
+- **SCSS** — component-scoped styling
+- **JavaScript** — UI interactions (modals, dropdowns, inline edits, table filters)
+- **Tailwind CSS** — utility-first layout and spacing (custom system inspired by Tailwind conventions)
+- **Shopify App Bridge** — integration layer for embedding within Shopify admin
+
+## ERB Templates
+
+Rather than a single-page React app, Channelbay's UI is built with **server-rendered ERB templates** — each page or partial is an `.erb` file that Rails renders with real data before the browser receives it. This means:
+
+- Fast initial render — no JS bundle required before content appears
+- Simpler data flow — no separate API layer between the frontend and application state
+- Template composition via Rails partials and layouts
+
+I built and maintained the template structure for key screens: inventory overview, per-product stock detail, purchase order creation/edit, adjustment history, and stock alert configuration.
+
+## Reusable Ruby View Helpers
+
+The equivalent of React hooks in this stack are **Ruby view helpers** — reusable Ruby methods defined in `app/helpers/` that encapsulate UI logic, HTML generation, or data transformation used across multiple templates.
+
+I wrote helpers for:
+
+- **Rendering status badges** — a single helper that takes a status string and returns the correct HTML with the right CSS classes (green for in-stock, amber for low-stock, red for out-of-stock)
+- **Formatting inventory numbers** — localised number formatting, units, and "N/A" fallbacks in one place rather than duplicated across every template
+- **Building filterable table headers** — a helper that renders sortable column headers with the correct `data-` attributes and aria labels for the JS sort handler to pick up
+- **Conditional class composition** — similar to `clsx`, but as a Ruby helper: takes a hash of condition → class string and returns the joined result
+
+These helpers follow the same principle as React custom hooks — extract repeated UI logic, name it clearly, use it everywhere.
+
+## SCSS / Component Interactions
+
+For a data-dense B2B tool, interaction quality matters:
+
+- **Inline editing**: clicking a stock quantity opens an inline input in place; `blur` and `Enter` trigger save; `Escape` cancels — all handled with vanilla JS event listeners scoped to the component
+- **Filterable tables**: JavaScript-powered column filters with URL query param sync so filtered views are shareable/bookmarkable
+- **Expandable rows**: PO line items collapse/expand with CSS transitions driven by a `data-expanded` attribute toggle
+- **Stock alert modals**: accessible modal pattern (focus trap, `Escape` to close, backdrop click dismiss) implemented without a library
+
+SCSS is organised per-component with BEM-like naming, using SCSS variables for the design token layer (colours, spacing, border-radius) to keep the visual system consistent as new screens are added.
+
+## Performance
+
+Even for an admin tool, sluggish page loads erode trust. I reduced average page load time by **2 seconds** by:
+
+- Auditing Rails partial rendering — removing N+1 template includes that were fetching data per-row in large inventory tables
+- Lazy-loading heavy chart/graph panels (Highcharts-based dashboards) only after the primary table content had rendered
+- Deferring non-critical JavaScript (tooltip initialisation, analytics) to `DOMContentLoaded` rather than blocking render
+
+## Outcome
+
+- Live on the Shopify App Store serving merchants managing multi-channel inventory
+- Reusable view helper library reduced duplicated template logic across the codebase
+- 2-second page load reduction on high-row-count inventory screens
+- Accessible, interactive component patterns implemented without adding JS framework overhead

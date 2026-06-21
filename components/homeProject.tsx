@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { Project } from '@/lib/projects'
 import { formateDate } from '@/lib/utils'
+import { Badge } from '@/components/ui/badge'
 
 type Props = {
     projects:Project []
@@ -17,11 +18,12 @@ export default function HomeProjects(
         <li key={metadata.slug} className='group relative'>
           <Link href={`/projects/${metadata.slug}`}>
             {metadata.image && (
-              <div className='h-80 w-full overflow-hidden bg-muted sm:h-60'>
+              <div className='relative h-80 w-full overflow-hidden bg-muted sm:h-60'>
                 <Image
                   src={metadata.image}
                   alt={metadata.title || 'project'}
                   fill
+                  sizes='(max-width: 640px) 100vw, 50vw'
                   className='rounded-lg object-cover object-center transition-transform duration-500 group-hover:scale-105'
                 />
               </div>
@@ -38,6 +40,15 @@ export default function HomeProjects(
               <p className='text-xs font-light text-muted-foreground'>
                 {formateDate(metadata.timePeriod ?? '')}
               </p>
+              {metadata.tags && metadata.tags.length > 0 && (
+                <div className='mt-2 flex flex-wrap gap-1'>
+                  {metadata.tags.map(tag => (
+                    <Badge key={tag} variant='secondary' className='text-xs px-2 py-0'>
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
             </div>
           </Link>
         </li>

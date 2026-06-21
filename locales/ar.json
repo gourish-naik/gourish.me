@@ -1,19 +1,46 @@
 {
   "About": {
     "hello": "مرحبًا، أنا جوريش.",
-    "description": "👋 مرحبًا، أنا جوريش — مهندس واجهة أمامية شغوف من الهند، أحب تحويل الأفكار إلى واقع من خلال البرمجة. أتقن إنشاء تجارب ويب نظيفة وسريعة الاستجابة وسهلة الاستخدام باستخدام React وNext.js وJavaScript الحديث. لكن وراء الكود، لدي فضول كبير تجاه التكنولوجيا — أتعلم باستمرار، أجرّب أشياء جديدة، وأشارك ما أكتشفه في طريقي. بالنسبة لي، لا يقتصر التطوير على بناء التطبيقات فحسب، بل يتعلق أيضًا بحل المشكلات الحقيقية، والنمو كمطوّر، ومساعدة الآخرين."
+    "description": "👋 مرحبًا، أنا جوريش — مهندس واجهة أمامية شغوف من الهند، أحب تحويل الأفكار إلى واقع من خلال البرمجة. أتقن إنشاء تجارب ويب نظيفة وسريعة الاستجابة وسهلة الاستخدام باستخدام React وNext.js وJavaScript الحديث. لكن وراء الكود، لدي فضول كبير تجاه التكنولوجيا — أتعلم باستمرار، أجرّب أشياء جديدة، وأشارك ما أكتشفه في طريقي. بالنسبة لي، لا يقتصر التطوير على بناء التطبيقات فحسب، بل يتعلق أيضًا بحل المشكلات الحقيقية، والنمو كمطوّر، ومساعدة الآخرين.",
+    "available": "متاح للمشاريع المستقلة"
   },
   "work": "العمل",
   "projects": "المشاريع",
   "blogs": "المدونات",
   "touch": "تواصل",
+  "services": "الخدمات",
   "project":{
-    "recentProjects": "المشاريع الحديثة",
+    "recentProjects": "أعمال مختارة",
     "allProjects": "جميع المشاريع"
   },
+  "contact": "تواصل",
+  "relatedBlogs": "مقالات ذات صلة",
   "HireMe": {
     "title": "لنعمل معًا",
     "description": "أنا متاح حاليًا للعمل الحر ومستعد لمناقشة المشاريع الجديدة. إذا كان لديك شيء في ذهنك، أو ترغب فقط في إلقاء التحية، فلا تتردد في التواصل.",
     "downloadResume": "تحميل السيرة الذاتية"
+  },
+  "ServicesPage": {
+    "title": "الخدمات",
+    "subtitle": "Focused e-commerce frontend engagements — scoped to deliver measurable outcomes.",
+    "audit": {
+      "name": "تدقيق الأداء",
+      "duration": "أسبوع–أسبوعان · سعر ثابت",
+      "description": "A deep-dive into your storefront's Core Web Vitals, UX flows, and frontend architecture. You get a prioritised report with specific, actionable fixes — not a generic Lighthouse printout.",
+      "includes": ["Core Web Vitals analysis (LCP, CLS, INP)", "Bundle & image audit", "Mobile UX walkthrough", "Prioritised fix recommendations"]
+    },
+    "build": {
+      "name": "بناء / ترحيل",
+      "duration": "حسب المشروع",
+      "description": "New PWA Studio storefronts, Next.js headless builds, or migrations away from legacy Magento themes. I handle the frontend end-to-end — from architecture to deployment.",
+      "includes": ["Next.js or Magento PWA Studio", "Component library setup", "CMS / API integration", "Performance-first implementation"]
+    },
+    "retainer": {
+      "name": "اشتراك شهري",
+      "duration": "مستمر · شهريًا",
+      "description": "A dedicated slice of my time each month for your team — feature development, performance maintenance, code reviews, or whatever needs the most attention.",
+      "includes": ["Agreed hours per month", "Feature development & bug fixes", "Performance monitoring", "Async availability via Slack / email"]
+    },
+    "cta": "دعنا نتحدث عن مشروعك"
   }
 }

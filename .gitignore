@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+Secret.local
+portfolio-redesign-plan.md
+step-to-setup-deploy.md
 
 # vercel
 .vercel

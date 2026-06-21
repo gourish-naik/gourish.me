@@ -1,0 +1,76 @@
+---
+title: 'MARINA Homes — Magento PWA Studio Multi-Store'
+summary: 'Built and themed a Magento PWA Studio storefront for a Dubai-based premium furnishings brand, supporting multiple regional stores from a single codebase with RTL for Arabic markets.'
+image: /images/marina-full.png
+timePeriod: '2022-08-01'
+tags: ['Magento PWA Studio', 'PWA', 'Multi-Store', 'RTL', 'Tailwind CSS']
+---
+
+## The Problem
+
+MARINA Homes — a premium furnishings brand with retail presence across the UAE and wider Middle East — needed a modern, fast storefront to replace their legacy Magento theme. The requirements were specific:
+
+- **Multi-store, single codebase** — multiple regional stores (`/en-uae`, `/ar-uae`, `/en-sa`, etc.) sharing one frontend deployment
+- **Same UI across all stores** — unlike a multi-brand project, MARINA's stores share a single design language; only language, currency, and catalogue differ per store
+- **RTL for Arabic stores** — Arabic-language stores required a fully mirrored, right-to-left layout
+- **Premium UX** — the brand targets high-end buyers; performance and visual polish were non-negotiable
+
+## My Role
+
+Frontend Engineer at Codilar Technologies. I designed and customised UI themes using Magento PWA Studio and Tailwind CSS, and developed the responsive, accessible components across the storefront.
+
+## Stack
+
+- **Magento PWA Studio** (Peregrine + Venia UI) — the base framework
+- **Tailwind CSS** — utility-first styling layered on top of Venia's default styles
+- **GraphQL** — all data fetched from Magento backend via the PWA Studio GraphQL client
+- **React** — component layer within the PWA Studio architecture
+
+## Multi-Store Architecture
+
+Magento PWA Studio handles multi-store via store codes in the URL — `marinahomeinteriors.com/en-uae`, `marinahomeinteriors.com/ar-uae`, etc. Each store code maps to a Magento store view with its own:
+
+- Language and locale
+- Currency
+- Catalogue visibility (some products differ by region)
+
+The frontend itself stays **identical across stores** — no per-store component overrides. All variation comes from the Magento store view configuration and the locale context, which drives:
+
+- Translation strings (via `react-intl`)
+- RTL layout direction
+- Currency display
+
+This is a fundamentally different model from the Al Fakher monorepo: rather than per-brand override files, here the single UI adapts to the store context at runtime.
+
+## RTL Implementation
+
+Arabic stores (`ar-uae`, `ar-sa`, etc.) required a mirrored layout. Approach within PWA Studio:
+
+- Detected locale from the store code on initial load
+- Set `dir="rtl"` on the document root for Arabic locales
+- Used **CSS logical properties** throughout custom components (`padding-inline-start`, `border-inline-end`, etc.) so layout mirrors automatically
+- Overrode Venia UI's hardcoded directional styles (e.g., icon alignments, breadcrumb separators, dropdown arrow positions) with RTL-aware equivalents
+- Validated against Magento's Arabic store view with real Arabic product data
+
+## Tailwind on Top of Venia
+
+Magento PWA Studio ships with Venia UI — a component library with its own CSS modules. Integrating Tailwind on top required:
+
+- Configuring Tailwind's `important` strategy to win specificity battles against Venia's scoped CSS modules
+- Building custom components (product cards, hero banners, promotional strips, navigation drawers) fully in Tailwind rather than extending Venia CSS
+- Keeping Venia's functional components (cart, checkout, auth) mostly intact and reskinning them via CSS module overrides only where necessary — avoiding deep forks that would break on PWA Studio upgrades
+
+## Performance Focus
+
+PWA Studio gives you a PWA shell out of the box (service worker, offline support, app-like navigation), but raw performance still needed work:
+
+- Images: replaced default Venia image handling with optimised `srcset` and explicit aspect-ratio containers to eliminate CLS on product listing pages
+- Fonts: self-hosted Arabic + Latin web fonts with `font-display: swap` to prevent FOIT on slow connections common in some Middle Eastern markets
+- Above-the-fold: audited hero and category banner render path to ensure LCP element was server-rendered, not client-injected
+
+## Outcome
+
+- Live production storefront at `marinahomeinteriors.com` serving UAE, Saudi Arabia, and other regional stores
+- Full Arabic RTL support across all Arabic store views at launch
+- Premium brand experience achieved within PWA Studio's constraints without deep-forking the framework
+- Consistent UI maintained across all regional stores from a single deployment

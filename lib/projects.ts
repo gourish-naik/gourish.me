@@ -13,6 +13,7 @@ export type ProjectMetadata = {
   summary?: string
   image?: string
   timePeriod?: string
+  tags?: string[]
   slug: string
 }
 

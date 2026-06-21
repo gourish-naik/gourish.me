@@ -23,6 +23,10 @@ export default function Intro() {
         <p className='mt-3 text-foreground'>
           {t("description")}
         </p>
+        <p className='mt-4 flex items-center gap-2 text-sm text-muted-foreground'>
+          <span className='inline-block h-2 w-2 rounded-full bg-green-500' />
+          <a href='/touch' className='hover:text-foreground transition-colors'>{t("available")}</a>
+        </p>
       </div>
       <div className='relative user-none c-cursor'>
         <Image

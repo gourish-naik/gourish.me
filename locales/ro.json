@@ -27,19 +27,46 @@
   },
   "About": {
     "hello": "Salut, sunt Gourish.",
-    "description": "👋 Salut, sunt Gourish — un inginer Frontend pasionat din India, care iubește să ducă ideile la viață prin cod. Sunt specializat în crearea unor experiențe web curate, responsive și prietenoase pentru utilizator, folosind React, Next.js și JavaScript modern. Dar dincolo de cod, sunt profund curios în ceea ce privește tehnologia — mereu învăț, experimentez și împărtășesc ceea ce descopăr în acest proces. Pentru mine, dezvoltarea nu înseamnă doar crearea de aplicații — înseamnă rezolvarea unor probleme reale, evoluția ca creator și ajutorul acordat altora."
+    "description": "👋 Salut, sunt Gourish — un inginer Frontend pasionat din India, care iubește să ducă ideile la viață prin cod. Sunt specializat în crearea unor experiențe web curate, responsive și prietenoase pentru utilizator, folosind React, Next.js și JavaScript modern. Dar dincolo de cod, sunt profund curios în ceea ce privește tehnologia — mereu învăț, experimentez și împărtășesc ceea ce descopăr în acest proces. Pentru mine, dezvoltarea nu înseamnă doar crearea de aplicații — înseamnă rezolvarea unor probleme reale, evoluția ca creator și ajutorul acordat altora.",
+    "available": "Disponibil pentru proiecte freelance"
   },
   "work": "Experiență",
   "projects": "Proiecte",
   "blogs": "Bloguri",
   "touch": "Contact",
+  "services": "Servicii",
   "project": {
-    "recentProjects": "Proiecte Recente",
+    "recentProjects": "Lucrări Selectate",
     "allProjects": "Toate Proiectele"
   },
+  "contact": "Contact",
+  "relatedBlogs": "Articole similare",
   "HireMe": {
     "title": "Să Lucrăm Împreună",
     "description": "În prezent, sunt disponibil pentru proiecte freelance și deschis pentru a discuta noi proiecte. Dacă aveți ceva în minte sau doriți doar să salutați, nu ezitați să mă contactați.",
     "downloadResume": "Descărcați CV-ul"
+  },
+  "ServicesPage": {
+    "title": "Servicii",
+    "subtitle": "Focused e-commerce frontend engagements — scoped to deliver measurable outcomes.",
+    "audit": {
+      "name": "Audit de Performanță",
+      "duration": "1–2 săptămâni · Preț fix",
+      "description": "A deep-dive into your storefront's Core Web Vitals, UX flows, and frontend architecture. You get a prioritised report with specific, actionable fixes — not a generic Lighthouse printout.",
+      "includes": ["Core Web Vitals analysis (LCP, CLS, INP)", "Bundle & image audit", "Mobile UX walkthrough", "Prioritised fix recommendations"]
+    },
+    "build": {
+      "name": "Build / Migrare",
+      "duration": "Bazat pe proiect",
+      "description": "New PWA Studio storefronts, Next.js headless builds, or migrations away from legacy Magento themes. I handle the frontend end-to-end — from architecture to deployment.",
+      "includes": ["Next.js or Magento PWA Studio", "Component library setup", "CMS / API integration", "Performance-first implementation"]
+    },
+    "retainer": {
+      "name": "Abonament",
+      "duration": "Continuu · Lunar",
+      "description": "A dedicated slice of my time each month for your team — feature development, performance maintenance, code reviews, or whatever needs the most attention.",
+      "includes": ["Agreed hours per month", "Feature development & bug fixes", "Performance monitoring", "Async availability via Slack / email"]
+    },
+    "cta": "Haideți să discutăm despre proiectul dvs."
   }
 }
