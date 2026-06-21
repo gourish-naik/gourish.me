@@ -53,12 +53,12 @@ function emailTemplate(name: string, email: string, message: string): string {
               <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="padding-right:12px;">
-                    <a href="https://gourish.me" style="display:inline-block;background:#18181b;color:#ffffff;text-decoration:none;font-size:13px;font-weight:500;padding:10px 20px;border-radius:6px;">
+                    <a href="https://igourish.in" style="display:inline-block;background:#18181b;color:#ffffff;text-decoration:none;font-size:13px;font-weight:500;padding:10px 20px;border-radius:6px;">
                       Portfolio →
                     </a>
                   </td>
                   <td>
-                    <a href="https://gourish.me/blogs" style="display:inline-block;background:#f4f4f5;color:#18181b;text-decoration:none;font-size:13px;font-weight:500;padding:10px 20px;border-radius:6px;border:1px solid #e4e4e7;">
+                    <a href="https://igourish.in/blogs" style="display:inline-block;background:#f4f4f5;color:#18181b;text-decoration:none;font-size:13px;font-weight:500;padding:10px 20px;border-radius:6px;border:1px solid #e4e4e7;">
                       Blog →
                     </a>
                   </td>

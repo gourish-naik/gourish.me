@@ -26,21 +26,6 @@ export default function ContactForm() {
 
   return (
     <div className='space-y-3'>
-      {/* Success banner — fades after 5s, form stays and resets */}
-      {showBanner && (
-        <div
-          style={{ opacity: fading ? 0 : 1, transition: 'opacity 1.2s ease' }}
-          className='rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3'
-        >
-          <p className='text-sm font-medium text-green-600 dark:text-green-400'>
-            Message sent — I&apos;ll get back to you soon.
-          </p>
-          <p className='mt-1 text-xs text-muted-foreground/70'>
-            jk — if that email address has a typo, this confirmation isn&apos;t reaching you 👀 double-check it.
-          </p>
-        </div>
-      )}
-
       <form ref={formRef} action={action} className='space-y-3'>
         <Input
           name='name'
@@ -72,6 +57,21 @@ export default function ContactForm() {
           {pending ? 'Sending…' : 'Send message'}
         </Button>
       </form>
+
+      {/* Success banner — fades after 5s, form stays and resets */}
+        {showBanner && (
+          <div
+            style={{ opacity: fading ? 0 : 1, transition: 'opacity 1.2s ease' }}
+            className='rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3'
+          >
+            <p className='text-sm font-medium text-green-600 dark:text-green-400'>
+              Message sent — I&apos;ll get back to you soon.
+            </p>
+            <p className='mt-1 text-xs text-muted-foreground/70'>
+              jk — if that email address has a typo, this confirmation isn&apos;t reaching you 👀 double-check it.
+            </p>
+          </div>
+        )}
     </div>
   )
 }
