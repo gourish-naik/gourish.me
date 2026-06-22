@@ -1,4 +1,24 @@
+import type { Metadata } from 'next';
 import { fetchBlogsFromCMS, fetchAllTagsFromCMS, BlogPost } from '@/lib/blog-data';
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Thoughts on frontend development, e-commerce architecture, React, Next.js, and building fast storefronts.",
+  openGraph: {
+    title: "Blog | iGourish",
+    description:
+      "Thoughts on frontend development, e-commerce architecture, React, Next.js, and building fast storefronts.",
+    url: "https://igourish.in/blogs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | iGourish",
+    description:
+      "Thoughts on frontend development, e-commerce architecture, React, Next.js, and building fast storefronts.",
+  },
+};
 import { isValidTechTag } from '@/lib/tech-tags';
 import { BlogTagFilter } from '@/components/blog-tag-filter';
 import { getTranslations } from 'next-intl/server';

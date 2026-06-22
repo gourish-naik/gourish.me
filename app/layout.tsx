@@ -1,4 +1,4 @@
-// import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 
 import { cn } from "@/lib/utils";
@@ -18,9 +18,12 @@ const playfair = Playfair_Display({
   
 })
 
-// app/page.tsx or app/layout.tsx
-export const metadata = {
-  title: "Gourishankar Menavath | React & Next.js E-commerce Consultant",
+export const metadata: Metadata = {
+  metadataBase: new URL("https://igourish.in"),
+  title: {
+    default: "Gourishankar Menavath | React & Next.js E-commerce Consultant",
+    template: "%s | iGourish",
+  },
   description:
     "4+ years building fast, scalable storefronts with React, Next.js, and Magento PWA Studio for global e-commerce brands.",
   keywords: [
@@ -42,24 +45,25 @@ export const metadata = {
     description:
       "4+ years building fast, scalable e-commerce storefronts with React, Next.js & Magento PWA Studio. Available for freelance projects.",
     url: "https://igourish.in",
-    siteName: "igourish",
+    siteName: "iGourish",
     images: [
       {
-        url: "https://igourish.in/assets/me.jpeg",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Gourishankar Menavath Portfolio",
+        alt: "iGourish — Growing ideas. Building impact.",
       },
     ],
     type: "website",
+    locale: "en_US",
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Gourishankar Menavath | Frontend Developer",
-  //   description:
-  //     "Explore my work in React, NextJS, and e-commerce development.",
-  //   images: ["https://yourdomain.com/og-image.jpg"],
-  // },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gourishankar Menavath | React & Next.js E-commerce Consultant",
+    description:
+      "4+ years building fast, scalable e-commerce storefronts with React, Next.js & Magento PWA Studio. Available for freelance projects.",
+    images: ["/og.png"],
+  },
 };
 
 export default async function RootLayout({
