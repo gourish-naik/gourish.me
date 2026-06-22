@@ -76,7 +76,8 @@ export async function createBlogPost(
   const summary = formData.get('summary')?.toString().trim() || ''
   const content = formData.get('content')?.toString().trim() || ''
   const tagsRaw = formData.get('tags')?.toString().trim() || ''
-  const date = formData.get('date')?.toString() || new Date().toISOString()
+  const rawDate = formData.get('date')?.toString()
+  const date = rawDate ? new Date(rawDate).toISOString() : new Date().toISOString()
 
   if (!title || !slug || !summary || !content) {
     return { status: 'error', message: 'Title, slug, summary and content are required.' }
