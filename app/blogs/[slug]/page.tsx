@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { fetchBlogBySlugFromCMS, getBlogSlugs, fetchRelatedBlogs } from '@/lib/blog-data';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
@@ -8,6 +9,47 @@ import { ArrowLeftIcon } from 'lucide-react';
 export async function generateStaticParams() {
   const slugs = await getBlogSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await fetchBlogBySlugFromCMS(slug);
+
+  if (!blog) return {};
+
+  const ogImage = blog.coverImage?.url ?? '/og.png';
+
+  return {
+    title: blog.title,
+    description: blog.summary,
+    authors: [{ name: blog.author.name }],
+    openGraph: {
+      title: blog.title,
+      description: blog.summary,
+      url: `https://igourish.in/blogs/${blog.slug}`,
+      siteName: 'iGourish',
+      type: 'article',
+      publishedTime: blog.date,
+      authors: [blog.author.name],
+      tags: blog.tags,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.summary,
+      images: [ogImage],
+    },
+  };
 }
 
 function sanitizeHTML(html: string): string {
