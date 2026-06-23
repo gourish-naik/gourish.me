@@ -19,7 +19,7 @@ export async function generateMetadata(
 
   if (!blog) return {};
 
-  const ogImage = blog.coverImage?.url ?? '/og.png';
+  const ogImage = blog.coverImage?.url ?? '/images/og/blog.png';
 
   return {
     title: blog.title,

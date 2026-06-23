@@ -12,9 +12,22 @@ const BATCH_SIZE = 4;
 
 /*{ params: { locale } }: ProjectsPageProps*/
 export async function generateMetadata() {
-  // const t = await getTranslations({ locale, namespace: 'ProjectsPage' }); // Removed
   return {
-    title: "My Projects", // Static English title
+    title: 'Projects | Gourishankar Menavath',
+    description: 'A selection of e-commerce and web projects built with React, Next.js, and Magento PWA Studio.',
+    openGraph: {
+      title: 'Projects | iGourish',
+      description: 'A selection of e-commerce and web projects built with React, Next.js, and Magento PWA Studio.',
+      url: 'https://igourish.in/projects',
+      type: 'website',
+      images: [{ url: '/images/og/projects.png', width: 1200, height: 630, alt: 'Projects | iGourish' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Projects | iGourish',
+      description: 'A selection of e-commerce and web projects built with React, Next.js, and Magento PWA Studio.',
+      images: ['/images/og/projects.png'],
+    },
   };
 }
 

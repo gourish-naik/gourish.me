@@ -9,6 +9,19 @@ import ContactForm from '@/components/contact-form'
 export const metadata = {
   title: 'Contact | Gourishankar Menavath',
   description: 'Get in touch for React, Next.js & Magento PWA Studio e-commerce freelance work.',
+  openGraph: {
+    title: 'Contact | iGourish',
+    description: 'Get in touch for React, Next.js & Magento PWA Studio e-commerce freelance work.',
+    url: 'https://igourish.in/touch',
+    type: 'website',
+    images: [{ url: '/images/og/touch.png', width: 1200, height: 630, alt: 'Contact | iGourish' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact | iGourish',
+    description: 'Get in touch for React, Next.js & Magento PWA Studio e-commerce freelance work.',
+    images: ['/images/og/touch.png'],
+  },
 }
 
 export default async function TouchPage() {

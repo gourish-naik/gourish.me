@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "iGourish",
     images: [
       {
-        url: "/og.png",
+        url: "/images/og/home.png",
         width: 1200,
         height: 630,
         alt: "iGourish — Growing ideas. Building impact.",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "Gourishankar Menavath | React & Next.js E-commerce Consultant",
     description:
       "4+ years building fast, scalable e-commerce storefronts with React, Next.js & Magento PWA Studio. Available for freelance projects.",
-    images: ["/og.png"],
+    images: ["/images/og/home.png"],
   },
 };
 

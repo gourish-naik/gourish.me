@@ -6,6 +6,21 @@ export const metadata = {
   title: 'Services | Gourishankar Menavath',
   description:
     'React, Next.js & Magento PWA Studio e-commerce frontend services — performance audits, storefront builds, and ongoing retainers.',
+  openGraph: {
+    title: 'Services | iGourish',
+    description:
+      'React, Next.js & Magento PWA Studio e-commerce frontend services — performance audits, storefront builds, and ongoing retainers.',
+    url: 'https://igourish.in/services',
+    type: 'website',
+    images: [{ url: '/images/og/services.png', width: 1200, height: 630, alt: 'Services | iGourish' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Services | iGourish',
+    description:
+      'React, Next.js & Magento PWA Studio e-commerce frontend services — performance audits, storefront builds, and ongoing retainers.',
+    images: ['/images/og/services.png'],
+  },
 }
 
 export default async function ServicesPage() {

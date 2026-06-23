@@ -11,12 +11,21 @@ export const metadata: Metadata = {
       "Thoughts on frontend development, e-commerce architecture, React, Next.js, and building fast storefronts.",
     url: "https://igourish.in/blogs",
     type: "website",
+    images: [
+      {
+        url: "/images/og/blog.png",
+        width: 1200,
+        height: 630,
+        alt: "Blog | iGourish",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Blog | iGourish",
     description:
       "Thoughts on frontend development, e-commerce architecture, React, Next.js, and building fast storefronts.",
+    images: ["/images/og/blog.png"],
   },
 };
 import { isValidTechTag } from '@/lib/tech-tags';

@@ -1,4 +1,23 @@
+import type { Metadata } from 'next';
 import { getCompanyGroups, CompanyGroup, WorkEntry } from '@/lib/work';
+
+export const metadata: Metadata = {
+  title: 'Work Experience | Gourishankar Menavath',
+  description: 'Frontend engineering roles across e-commerce, retail, and web — building fast, scalable storefronts with React, Next.js, and Magento PWA Studio.',
+  openGraph: {
+    title: 'Work Experience | iGourish',
+    description: 'Frontend engineering roles across e-commerce, retail, and web — building fast, scalable storefronts with React, Next.js, and Magento PWA Studio.',
+    url: 'https://igourish.in/work',
+    type: 'website',
+    images: [{ url: '/images/og/work.png', width: 1200, height: 630, alt: 'Work Experience | iGourish' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Work Experience | iGourish',
+    description: 'Frontend engineering roles across e-commerce, retail, and web — building fast, scalable storefronts with React, Next.js, and Magento PWA Studio.',
+    images: ['/images/og/work.png'],
+  },
+};
 import Image from 'next/image';
 import Link from 'next/link';
 
